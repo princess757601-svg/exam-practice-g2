@@ -3,6 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>二年級期末總複習</title>
+<style>
+  html,body{margin:0;padding:0;height:100%;background:#eef3f8;font-family:"Microsoft JhengHei","PingFang TC","Noto Sans TC","Segoe UI",sans-serif;}
+  #modebar{display:flex;gap:8px;padding:8px 10px;background:#3a4250;position:sticky;top:0;z-index:10;}
+  #modebar button{flex:1;border:none;border-radius:12px;padding:12px 6px;font-size:clamp(15px,4vw,18px);font-weight:800;font-family:inherit;color:#fff;cursor:pointer;background:#6b7585;transition:transform .08s;}
+  #modebar button:active{transform:translateY(2px);}
+  #modebar #bPractice.on{background:linear-gradient(#ff8fab,#e05f86);}
+  #modebar #bExam.on{background:linear-gradient(#5ec5e6,#2f9fc4);}
+  #frame{display:block;width:100%;border:0;height:calc(100vh - 58px);background:#fff;}
+</style>
+</head>
+<body>
+<div id="modebar">
+  <button id="bPractice" class="on">🌈 闖關練習</button>
+  <button id="bExam">📄 考卷模擬考</button>
+</div>
+<iframe id="frame" title="二年級學習"></iframe>
+<script id="srcPractice" type="text/plain">
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>二年級期末闖關練習｜國語 × 數學</title>
 <style>
   :root{
@@ -380,7 +403,7 @@ chinese:{ label:"國語", emoji:"📖", units:[
       {w:1, q:"有機會（ㄒㄧㄣ）（ㄕㄤˇ）特別演出。　✏️ 寫出（ㄒㄧㄣ ㄕㄤˇ）的國字", ans:"欣賞", e:"ㄒㄧㄣ ㄕㄤˇ＝欣賞。"},
       {w:1, q:"睜大眼睛（ㄗˇ）（ㄒㄧˋ）一看。　✏️ 寫出（ㄗˇ ㄒㄧˋ）的國字", ans:"仔細", e:"ㄗˇ ㄒㄧˋ＝仔細。"},
       {w:1, q:"他的腳受傷，要靠（ㄍㄨㄞˇ）（ㄓㄤˋ）走路。　✏️ 寫出（ㄍㄨㄞˇ ㄓㄤˋ）的國字", ans:"拐杖", e:"ㄍㄨㄞˇ ㄓㄤˋ＝拐杖。"},
-      {w:1, q:"端午節人們包（ㄗㄨㄥˋ）（ㄗ˙）。　✏️ 寫出（ㄗㄨㄥˋ ㄗ˙）的國字", ans:"粽子", e:"ㄗㄨㄥˋ ㄗ＝粽子。"}
+      {w:1, q:"端午節人們包（ㄗㄨㄥˋ）（ㄗ˙）。　✏️ 寫出（ㄗㄨㄥˋ ㄗ˙）的國字", ans:"粽子", e:"ㄗㄨㄥˋ ˙ㄗ＝粽子。"}
     ]
   }},
   /* ---------- 改錯字 ---------- */
@@ -397,7 +420,7 @@ chinese:{ label:"國語", emoji:"📖", units:[
       {fix:true, s:"爭大眼睛仔細看。", bad:"爭", ans:"睜", e:"睜大眼睛的「睜」是目字旁。"},
       {fix:true, s:"子細一看才發現答案。", bad:"子", ans:"仔", e:"仔細的「仔」是人字旁。"},
       {fix:true, s:"原來是一隻醜小鴉。", bad:"鴉", ans:"鴨", e:"醜小鴨的「鴨」。"},
-      {fix:true, s:"我和朋友到科工館參館。", bad:"館", ans:"觀", e:"參觀的「觀」。"},
+      {fix:true, s:"我們上週去博物院參館。", bad:"館", ans:"觀", e:"參觀的「觀」。"},
       {fix:true, s:"他用功念書，成積很好。", bad:"積", ans:"績", e:"成績的「績」是糸字旁。"},
       {fix:true, s:"小鳥站在樹支上唱歌。", bad:"支", ans:"枝", e:"樹枝的「枝」是木字旁。"}
     ],
@@ -416,7 +439,7 @@ chinese:{ label:"國語", emoji:"📖", units:[
       {q:"「切」的部首是？", o:["刀","七","二"], a:0, e:"切、分、刻都是「刀」部。"},
       {q:"「字」的部首是？", o:["子","宀","一"], a:0, e:"字的部首是「子」。"},
       {q:"「相」的部首是？", o:["目","木","日"], a:0, e:"相、看、眼都是「目」部。"},
-      {q:"「賣」的部首是？", o:["貝","十","買"], a:0, e:"和錢有關用「貝」部。"},
+      {q:"「賣」的部首是？", o:["貝","十","目"], a:0, e:"和錢有關用「貝」部。"},
       {q:"「切」有幾畫？", o:["4畫","3畫","5畫"], a:0, e:"切是4畫。"},
       {q:"「年」有幾畫？", o:["6畫","5畫","7畫"], a:0, e:"年是6畫。"}
     ],
@@ -882,6 +905,84 @@ function mergeBank(extra){
   }
 }
 mergeBank(MORE);
+
+/* =========================================================
+   MORE2：依考卷「高頻易考點」補強進階／挑戰題
+   ========================================================= */
+const MORE2 = {
+chinese:{
+  quan:{ chal:[
+    {q:"哪一個量詞「用錯」了？", o:["一顆蘋果樹","一把雨傘","一面鏡子"], a:0, e:"樹要用「棵」，「一顆蘋果樹」是錯的。"},
+    {q:"「一（　）公園」要用哪個量詞？", o:["座","條","張"], a:0, e:"公園用「座」：一座公園。"}
+  ]},
+  antonym:{ chal:[
+    {q:"和「珍貴」意思相反的是？", o:["普通","寶貴","重要"], a:0, e:"珍貴（很寶貝）↔普通（很常見）。"},
+    {q:"和「成功」意思相反的是？", o:["失敗","勝利","完成"], a:0, e:"成功↔失敗。"}
+  ]},
+  sentence:{ chal:[
+    {q:"「不但…而且…」是用來連接什麼？", o:["兩個一樣方向的事（都好）","兩個相反的事","一個原因一個結果"], a:0, e:"不但…而且…把兩個同方向的優點連起來。"}
+  ]},
+  reading:{ chal:[
+    {q:"人名、地名、國名的下面，要標什麼符號？", o:["專名號","問號","驚嘆號"], a:0, e:"專有名詞（人名、地名、國名）下面要加專名號。"},
+    {q:"「臺北」「日本」底下要加專名號，是因為它們是？", o:["地名、國名","動作","形容詞"], a:0, e:"地名、國名是專有名詞，要加專名號。"}
+  ]}
+},
+math:{
+  len:{
+    adv:[
+      {q:"比大小：9 公尺 和 1 公尺 99 公分，哪個長？", o:["9公尺","1公尺99公分","一樣長"], a:0, e:"9公尺＝900公分，1公尺99公分＝199公分，9公尺長很多。"},
+      {q:"466 公分 等於幾公尺幾公分？", o:["4公尺66公分","46公尺6公分","4公尺6公分"], a:0, e:"466公分＝4公尺66公分。"}
+    ],
+    chal:[
+      {q:"7 公尺 35 公分 等於幾公分？", o:["735公分","742公分","73公分"], a:0, e:"700＋35＝735公分。"},
+      {q:"由短到長排：9公尺、1公尺、99公分，最短的是？", o:["99公分","1公尺","9公尺"], a:0, e:"99公分＜1公尺(100公分)＜9公尺(900公分)。"}
+    ]
+  },
+  solid:{
+    adv:[
+      {q:"長方體相對的兩個面（對面）大小怎樣？", o:["一樣大","不一樣大","沒有對面"], a:0, e:"長方體對面（相對的兩面）一樣大。"},
+      {q:"圓錐有幾個尖尖的頂點？", vis:{type:"shape3d",kind:"cone"}, o:["1個","0個","3個"], a:0, e:"圓錐尖尖的地方有1個頂點。"}
+    ],
+    chal:[
+      {q:"球、圓柱、圓錐中，哪一個完全「沒有」頂點？", o:["球","圓錐","圓柱"], a:0, e:"球沒有頂點；圓錐有1個頂點。"}
+    ]
+  },
+  frac:{ chal:[
+    {q:"由大到小排：二分之一、四分之一、八分之一，最大的是？", o:["二分之一","四分之一","八分之一"], a:0, e:"分母越小，每一份越大，所以二分之一最大。"},
+    {q:"「三分之一」用分子分母記，是？", o:["分母3、分子1","分母1、分子3","分母3、分子3"], a:0, e:"平分3份(分母3)、取1份(分子1)。"}
+  ]},
+  div:{ chal:[
+    {q:"30 顆綠豆，每盆種 6 顆，需要幾個花盆？", o:["5盆","6盆","24盆"], a:0, e:"30÷6＝5盆。"},
+    {q:"9 個綠豆莢平分給 3 組，每組分到幾個？", o:["3個","6個","27個"], a:0, e:"9÷3＝3個。"}
+  ]},
+  examM:{ chal:[
+    {q:"小叮噹有 9 元，大雄的錢是小叮噹的 5 倍多 5 元，大雄有幾元？", o:["50元","45元","14元"], a:0, e:"9×5＝45，再加5＝50元。先算倍，再加多的。"},
+    {q:"買 37 元的飲料，用 10 元硬幣付，至少要付幾個 10 元才夠？", o:["4個","3個","37個"], a:0, e:"3個只有30元不夠，要4個（40元）。"},
+    {q:"二年級 10 班，每班 27 人；租 10 輛車，每輛 35 個座位。全部都坐，會剩幾個座位？", o:["80個","70個","350個"], a:0, e:"學生10×27＝270人，座位10×35＝350個，350−270＝80個。"}
+  ]}
+}
+};
+mergeBank(MORE2);
+
+/* 新增單元：把／被字句（國語高頻改寫題）*/
+BANK.chinese.units.push({id:"baibei", name:"把／被字句", emoji:"🔁", levels:{
+  basic:[
+    {q:"「螞蟻把蛋糕吃掉了。」換成「被」字句，哪個對？", o:["蛋糕被螞蟻吃掉了","蛋糕把螞蟻吃掉了","螞蟻被蛋糕吃掉了"], a:0, e:"把→被，東西放前面：蛋糕被螞蟻吃掉了。"},
+    {q:"「同學把玩具借走了。」換成「被」字句，哪個對？", o:["玩具被同學借走了","玩具把同學借走了","同學被玩具借走了"], a:0, e:"玩具被同學借走了。"},
+    {q:"「弟弟把牛奶喝光了。」換成「被」字句，哪個對？", o:["牛奶被弟弟喝光了","牛奶把弟弟喝光了","弟弟被牛奶喝光了"], a:0, e:"牛奶被弟弟喝光了。"},
+    {q:"下面哪一句是「把字句」？", o:["我把書包放好了","書包被我放好了","這是我的書包"], a:0, e:"句子裡有「把」的是把字句。"}
+  ],
+  adv:[
+    {q:"「窗戶被風吹開了。」換成「把」字句，哪個對？", o:["風把窗戶吹開了","窗戶把風吹開了","風被窗戶吹開了"], a:0, e:"被→把，做事的人放前面：風把窗戶吹開了。"},
+    {q:"「帽子被猴子拿走了。」換成「把」字句，哪個對？", o:["猴子把帽子拿走了","帽子把猴子拿走了","猴子被帽子拿走了"], a:0, e:"猴子把帽子拿走了。"},
+    {q:"下面哪一句是「被字句」？", o:["花瓶被弟弟打破了","弟弟把花瓶打破了","弟弟打破花瓶"], a:0, e:"句子裡有「被」的是被字句。"}
+  ],
+  chal:[
+    {q:"「樹上的猴子把他的帽子拿去玩。」和哪一句意思相同？", o:["他的帽子被樹上的猴子拿去玩","樹上的猴子的帽子很好玩","他把猴子拿去玩"], a:0, e:"把字句和被字句可以互換，意思一樣。"},
+    {q:"下面哪一句「把／被」用對了？", o:["哥哥把房間打掃乾淨","房間把哥哥打掃乾淨","哥哥被房間打掃乾淨"], a:0, e:"哥哥（做事的人）把房間（東西）打掃乾淨。"},
+    {q:"「魚被貓吃掉了。」這句話裡，是誰吃了魚？", o:["貓","魚","沒有人"], a:0, e:"被字句：魚＋被＋貓＋吃，所以是貓吃了魚。"}
+  ]
+}});
 
 /* =========================================================
    互動邏輯
@@ -1504,6 +1605,1080 @@ randomTitle();
 
 /* ---- 啟動 ---- */
 setSubject("chinese");
+<\/script>
+</body>
+</html>
+
+</script>
+<script id="srcExam" type="text/plain"><!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>二年級・考卷模擬考（國語 × 數學）</title>
+<style>
+  :root{
+    --bg1:#fff0f5; --bg2:#fde8ef;
+    --pink:#ff8fab; --pink-d:#e05f86;
+    --blue:#5ec5e6; --blue-d:#2f9fc4;
+    --green:#7ed957; --green-d:#56b82e;
+    --yellow:#ffd23f; --orange:#ff9f45;
+    --purple:#b388eb; --purple-d:#8a5fd6;
+    --ink:#384150; --card:#ffffff;
+    --ok:#38b000; --no:#ef476f;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html,body{margin:0; padding:0;}
+  body{font-family:"Microsoft JhengHei","PingFang TC","Noto Sans TC","Segoe UI",sans-serif;
+    color:var(--ink); background:linear-gradient(160deg,var(--bg1),var(--bg2)); min-height:100vh; -webkit-text-size-adjust:100%;}
+  .wrap{max-width:760px; margin:0 auto; padding:14px 14px 70px;}
+  header{text-align:center; padding:10px 0 4px;}
+  header h1{font-size:clamp(21px,5vw,28px); margin:6px 0 2px; color:var(--pink-d); text-shadow:1px 2px 0 #fff;}
+  header p{margin:0; color:#7a8190; font-size:14px;}
+  .sectitle{font-size:clamp(17px,4.5vw,21px); font-weight:800; margin:14px 0 12px; color:var(--ink);}
+  .subtabs{display:flex; gap:10px; margin:10px 0 6px;}
+  .subtab{flex:1; border:none; cursor:pointer; font-family:inherit; font-weight:800; color:#fff;
+    border-radius:16px; padding:13px 6px; font-size:clamp(16px,4.2vw,20px); box-shadow:0 4px 0 rgba(0,0,0,.12); transition:transform .08s;}
+  .subtab:active{transform:translateY(2px);}
+  .subtab#subMath{background:linear-gradient(var(--blue),var(--blue-d));}
+  .subtab#subCN{background:linear-gradient(var(--pink),var(--pink-d));}
+  .subtab.off{filter:grayscale(.55) brightness(1.05); opacity:.65; box-shadow:0 4px 0 rgba(0,0,0,.08);}
+  .solidbox{display:flex; justify-content:center; padding:10px; background:#f6fbff; border:2px solid #e2e9f1; border-radius:14px;}
+  .papers{display:flex; flex-direction:column; gap:12px;}
+  .pcard{border:none; cursor:pointer; font-family:inherit; text-align:left; background:var(--card);
+    border-radius:18px; padding:16px 18px; box-shadow:0 4px 14px rgba(80,90,120,.14); transition:transform .08s;
+    display:flex; align-items:center; gap:14px;}
+  .pcard:active{transform:scale(.98);}
+  .pcard .pico{font-size:32px;}
+  .pcard .pmain{flex:1;}
+  .pcard .pname{font-size:clamp(16px,4vw,19px); font-weight:800;}
+  .pcard .pmeta{font-size:13px; color:#9aa1b0; margin-top:3px;}
+  .pcard .parrow{font-size:22px; color:var(--pink-d);}
+  .pcard.soon{opacity:.55; cursor:default;}
+  .pcard.soon .parrow{font-size:13px; color:#c0c6d0; font-weight:800;}
+  .note{background:#fff7e0; border:2px solid #ffe39a; border-radius:14px; padding:12px 14px; font-size:13px; color:#8a6d1a; margin-top:16px; line-height:1.7;}
+  .topbar{display:flex; align-items:center; gap:10px; margin:6px 0 12px;}
+  .progress{flex:1; height:14px; background:#f0dde4; border-radius:10px; overflow:hidden;}
+  .bar{height:100%; width:0; background:linear-gradient(90deg,var(--pink),var(--yellow)); transition:width .3s;}
+  .scorelbl{font-weight:800; color:var(--orange); white-space:nowrap; font-size:15px;}
+  .backbar{margin:4px 0 10px;}
+  .backbtn{border:none; cursor:pointer; font-family:inherit; background:#fff; color:var(--ink); font-weight:800;
+    border-radius:14px; padding:9px 14px; font-size:14px; box-shadow:0 3px 8px rgba(80,90,120,.12);}
+  .backbtn:active{transform:translateY(1px);}
+  .qcard{background:var(--card); border-radius:20px; padding:20px 18px; box-shadow:0 6px 18px rgba(80,90,120,.15);}
+  .qsec{font-size:13px; color:#9aa1b0; margin-bottom:4px; font-weight:700;}
+  .qnum{display:inline-block; background:var(--pink); color:#fff; font-weight:800; border-radius:10px; padding:2px 10px; font-size:14px; margin-bottom:10px;}
+  .ctxbox{background:#fff0f5; border:2px dashed #f4b8cd; border-radius:14px; padding:10px 12px; margin-bottom:12px;}
+  .ctxlbl{font-size:12px; font-weight:800; color:var(--pink-d); margin-bottom:5px;}
+  .ctxq{font-size:15px; color:#5a6373; font-weight:700; line-height:1.6; margin-bottom:4px; white-space:pre-wrap;}
+  .qtext{font-size:clamp(18px,4.6vw,22px); font-weight:800; line-height:1.8; margin-bottom:14px; white-space:pre-wrap;}
+  .opts{display:flex; flex-direction:column; gap:11px;}
+  .opt{border:3px solid #f0dde4; background:#fffafc; cursor:pointer; font-family:inherit; border-radius:15px;
+    padding:15px; font-size:clamp(17px,4.4vw,21px); font-weight:700; text-align:left; color:var(--ink);
+    transition:transform .06s,background .15s,border-color .15s; display:flex; align-items:center; gap:12px;}
+  .opt:active{transform:scale(.98);}
+  .opt .badge{width:28px; height:28px; border-radius:50%; background:var(--pink); color:#fff; display:flex;
+    align-items:center; justify-content:center; font-weight:800; flex-shrink:0; font-size:15px;}
+  .opt.correct{border-color:var(--ok); background:#e9ffe1;} .opt.correct .badge{background:var(--ok);}
+  .opt.wrong{border-color:var(--no); background:#ffe7ee;} .opt.wrong .badge{background:var(--no);}
+  .opt.dim{opacity:.5;}
+  .fills{display:flex; flex-direction:column; gap:12px; margin-bottom:6px;}
+  .frow{display:flex; align-items:center; gap:6px; flex-wrap:wrap; font-size:clamp(17px,4.4vw,20px); font-weight:700;}
+  .fin{width:120px; max-width:52vw; font-family:inherit; font-size:20px; font-weight:800; text-align:center;
+    border:3px solid #e6cdd6; border-radius:12px; padding:10px 6px; background:#fffef9; color:var(--ink);}
+  .fin.ok{border-color:var(--ok); background:#e9ffe1;} .fin.bad{border-color:var(--no); background:#ffe7ee;}
+  .fin:focus{outline:none; border-color:var(--pink);}
+  .fin.finwide{width:100%; max-width:none; text-align:left;}
+  .fixinstr{font-size:13px; color:#7a8190; font-weight:700; line-height:1.6; margin-bottom:10px;}
+  .fixsentence{font-size:clamp(22px,6vw,30px); line-height:1.9; display:flex; flex-wrap:wrap; gap:2px;}
+  .fixchar{cursor:pointer; min-width:38px; height:44px; display:flex; align-items:center; justify-content:center; border:3px solid transparent; border-radius:8px; transition:transform .06s;}
+  .fixchar:active{transform:scale(.85);}
+  .fixchar.circled{border-color:var(--no); border-radius:50%; color:var(--no); font-weight:800;}
+  .fixchar.nope{border-color:var(--no); border-radius:50%; color:var(--no); font-weight:800;}
+  .fixchar.isbad{border-color:var(--ok); border-radius:50%; color:var(--ok); font-weight:800;}
+  .orwrite{font-size:13px; color:#9aa1b0; font-weight:700; margin:12px 0 6px;}
+  .penbar{display:flex; gap:8px; margin-bottom:8px; flex-wrap:wrap;}
+  .pentool{border:2px solid #e6cdd6; background:#fff; border-radius:12px; padding:8px 12px; font-family:inherit; font-weight:700; font-size:15px; cursor:pointer;}
+  .pentool.on{background:var(--pink); color:#fff; border-color:var(--pink-d);}
+  .padcanvas{width:100%; height:170px; border-radius:14px; border:3px dashed #e6cdd6; touch-action:none; display:block;
+    background:linear-gradient(#f3b6c8,#f3b6c8) center center/100% 2px no-repeat,
+      linear-gradient(#f3b6c8,#f3b6c8) center center/2px 100% no-repeat, #fffef9;}
+  .checkbtn{margin-top:14px; width:100%; border:none; cursor:pointer; font-family:inherit;
+    background:linear-gradient(var(--yellow),var(--orange)); color:#7a4a00; font-weight:800; border-radius:14px;
+    padding:14px; font-size:18px; box-shadow:0 4px 0 rgba(0,0,0,.12);}
+  .checkbtn:active{transform:translateY(2px);}
+  .selfbtns{display:flex; gap:10px; margin-top:14px;}
+  .selfbtns button{flex:1; border:none; cursor:pointer; font-family:inherit; font-weight:800; border-radius:14px;
+    padding:14px; font-size:16px; color:#fff; box-shadow:0 4px 0 rgba(0,0,0,.12);}
+  .sc-ok{background:linear-gradient(var(--green),var(--green-d));}
+  .sc-no{background:linear-gradient(var(--orange),#e07a1f);}
+  .feedback{margin-top:14px; border-radius:14px; padding:13px; font-size:15px; font-weight:700; display:none; line-height:1.6;}
+  .feedback.show{display:block;}
+  .feedback.good{background:#e9ffe1; color:#2c7a18; border:2px solid #b6e8a3;}
+  .feedback.bad{background:#fff2f6; color:#b3284e; border:2px solid #ffc2d4;}
+  .feedback .ans{display:block; margin-top:5px; font-weight:800; color:var(--ink);}
+  .feedback .exp{display:block; margin-top:5px; font-weight:600; color:#5a6373;}
+  .navrow{display:flex; gap:10px; margin-top:16px;}
+  .navbtn{flex:1; border:none; cursor:pointer; font-family:inherit; font-weight:800; border-radius:14px; padding:15px;
+    font-size:17px; box-shadow:0 4px 0 rgba(0,0,0,.13); color:#fff;}
+  .navbtn:active{transform:translateY(2px);}
+  .nav-prev{background:#c4adb6; flex:0 0 96px;}
+  .nav-next{background:linear-gradient(var(--pink),var(--pink-d));}
+  .navbtn:disabled{opacity:.4; cursor:default;}
+  .result{background:var(--card); border-radius:22px; padding:26px 20px; text-align:center; box-shadow:0 6px 18px rgba(80,90,120,.15);}
+  .result .big{font-size:60px;}
+  .result h2{font-size:24px; margin:8px 0 4px; color:var(--pink-d);}
+  .result .stars{font-size:38px; letter-spacing:3px; margin:6px 0;}
+  .result .rscore{font-size:22px; font-weight:800; color:var(--orange);}
+  .result .msg{font-size:16px; color:#5a6373; margin:10px 0 18px;}
+  .result button{width:100%; border:none; cursor:pointer; font-family:inherit; font-weight:800; border-radius:16px;
+    padding:16px; font-size:18px; color:#fff; box-shadow:0 4px 0 rgba(0,0,0,.13); margin-top:10px;}
+  .r-again{background:linear-gradient(var(--green),var(--green-d));}
+  .r-home{background:linear-gradient(var(--purple),var(--purple-d));}
+  .hide{display:none !important;}
+  footer{text-align:center; color:#aab; font-size:12px; margin-top:24px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>📚 二年級・考卷模擬考</h1>
+    <p>先選科目，再選一份考卷，像考試一樣整份寫，最後幫你算分！</p>
+  </header>
+
+  <section id="screenHome">
+    <div class="subtabs">
+      <button class="subtab" id="subMath">🔢 數學</button>
+      <button class="subtab" id="subCN">📖 國語</button>
+    </div>
+    <div class="sectitle">📚 選一份考卷開始</div>
+    <div class="papers" id="paperList"></div>
+    <div class="note">📝 題目都依照原始考卷整理。可以<b>打字</b>，也可以用<b>電腦筆／手指寫</b>；寫國字注音、造句這類沒有固定選項的，按「看答案」自己核對。改錯題可以<b>圈錯字＋寫正確的字</b>。記得<b>先把題目讀完再作答</b>喔！</div>
+  </section>
+
+  <section id="screenExam" class="hide">
+    <div class="backbar"><button class="backbtn" id="examBack">← 回考卷選單</button></div>
+    <div class="topbar">
+      <div class="progress"><div class="bar" id="bar"></div></div>
+      <div class="scorelbl" id="scoreLbl">⭐ 0</div>
+    </div>
+    <div class="qcard">
+      <div class="qsec" id="qsec"></div>
+      <div class="qnum" id="qnum"></div>
+      <div class="ctxbox hide" id="qctx"></div>
+      <div class="qtext" id="qtext"></div>
+      <div class="qvisual" id="qvisual"></div>
+      <div class="opts hide" id="opts"></div>
+      <div class="fills hide" id="fills"></div>
+      <button class="checkbtn hide" id="checkBtn">✏️ 對答案</button>
+      <div class="selfbtns hide" id="selfbtns">
+        <button class="sc-ok" id="selfOk">✅ 我寫對了</button>
+        <button class="sc-no" id="selfNo">🔁 我不會 / 寫錯</button>
+      </div>
+      <div class="feedback" id="feedback"></div>
+      <div class="navrow">
+        <button class="navbtn nav-prev" id="prevBtn">← 上一題</button>
+        <button class="navbtn nav-next" id="nextBtn" disabled>下一題 →</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="screenResult" class="hide">
+    <div class="result">
+      <div class="big" id="resEmoji">🎉</div>
+      <h2 id="resTitle">考完了！</h2>
+      <div class="stars" id="resStars"></div>
+      <div class="rscore" id="resScore"></div>
+      <div class="msg" id="resMsg"></div>
+      <button class="r-again" id="againBtn">🔄 再考一次這份</button>
+      <button class="r-home" id="homeBtn">📚 換一份考卷</button>
+    </div>
+  </section>
+
+  <footer>給最棒的你 💛 細心讀題、慢慢想，你一定可以的</footer>
+</div>
+
+<script>
+/* 題型：mcq 選擇 / tf 是非 / fill 填空 / self 自評（寫國字注音、造句…看答案自己核對）*/
+const T = true, F = false;
+function tf(n,q,a,e){ return {n, type:"tf", q, a, e}; }
+function mcq(n,q,o,a,e,vis){ return {n, type:"mcq", q, o, a, e, vis}; }
+function fill(n,q,blanks,e,vis){ return {n, type:"fill", q, blanks, e, vis}; }
+function self(n,q,ans,e){ return {n, type:"self", q, ans, e}; }
+function fix(n,s,bad,ans,e){ return {n, type:"fix", q:"下面這句話有一個字寫錯了，先圈出錯字，再把正確的字寫出來：", s, bad, ans, e}; }
+
+const PAPERS_MATH = [
+/* ===================== 臺北內湖 111 數學 ===================== */
+{
+  id:"neihu111", school:"臺北市內湖區內湖國民小學", year:"111學年下學期 期末", icon:"🏫",
+  qs:[
+    tf("是非1","教室的長度大約 6 公分（cm）。", F, "教室很長，應該用「公尺」量，大約 6～9 公尺。"),
+    tf("是非2","數學課本的長大約 2 公分。", F, "課本的長大約 26 公分。"),
+    tf("是非3","學校大門的長（高）大約 7 公分。", F, "大門很高，應該用公尺。"),
+    tf("是非4","教室的黑板長大約 4 公尺（m）。", T, "黑板大約 4 公尺，正確。"),
+    fill("填1","看圖回答：這個形體叫做（　）體，它有（　）個邊、（　）個面、（　）個頂點。",
+      [{ans:["長方體","長方"]},{ans:"12",suf:"個邊"},{ans:"6",suf:"個面"},{ans:"8",suf:"個頂點"}],
+      "長方體有 12 條邊、6 個面、8 個頂點。", {type:"solid",kind:"cuboid"}),
+    mcq("填2","「七分之一」記成下面哪一個？", ["1/7","7/1"], 0, "七分之一：分母 7 在下、分子 1 在上，記成 1/7。"),
+    fill("填3","1 條蛋糕平分成 15 片，1 片是（　）條蛋糕。",
+      [{ans:["1/15","十五分之一"]}], "平分成 15 片，1 片就是十五分之一（1/15）條。"),
+    fill("填4","「1/9」讀作（　）。", [{ans:["九分之一"]}], "分母 9、分子 1，讀作「九分之一」。"),
+    fill("填5","有塊積木每個邊一樣長、每個面都一樣大，這個積木是（　）體。",
+      [{ans:["正方","正方體"]}], "每邊一樣長、每面一樣大的是正方體。"),
+    fill("填6","遊覽車高 3 公尺又 5 公分，也可以說成（　）公分。",
+      [{ans:"305",suf:"公分"}], "3 公尺＝300 公分，300＋5＝305 公分。"),
+    mcq("填7","人偶高度：ㄅ 1公尺50公分、ㄆ 30公分、ㄇ 105公分、ㄈ 1公尺。\n由「矮到高」排，正確的是？",
+      ["ㄆ → ㄈ → ㄇ → ㄅ","ㄅ → ㄇ → ㄈ → ㄆ","ㄈ → ㄆ → ㄇ → ㄅ"], 0,
+      "換成公分：ㄆ30 ＜ ㄈ100 ＜ ㄇ105 ＜ ㄅ150。"),
+    fill("填10-1","端午食材分類圖：肉類有豬肉、鱔魚；蔬菜水果有茄子、桃子、李子；點心有蒸糕、茶糖、五毒餅。\n先將食材分成（　）類。",
+      [{ans:["3","三"],suf:"類"}], "分成肉類、蔬菜水果、點心，共 3 類。"),
+    fill("填10-2","肉類有（　）和（　）。", [{ans:["豬肉"]},{ans:["鱔魚"]}],
+      "圖中肉類有豬肉、鱔魚。"),
+    mcq("填10-3","宇傑帶了水蜜桃，應該分到哪一類？", ["蔬菜水果類","肉類","點心類"], 0, "水蜜桃是水果，分到蔬菜水果類。"),
+    fill("圈1","生活課種豆，有 30 顆綠豆，每盆種 6 顆，需要準備幾個花盆？",
+      [{ans:"5",suf:"盆"}], "30÷6＝5 盆。"),
+    fill("圈2","長出 9 個綠豆莢，平分給 3 組，每組可以分到幾個？",
+      [{ans:"3",suf:"個"}], "9÷3＝3 個。"),
+    fill("應1","粽子有 54 顆，每 9 顆裝一袋，共可以裝成幾袋？",
+      [{ans:"6",suf:"袋"}], "54÷9＝6 袋。"),
+    fill("應2","有 28 個印章，平分給 7 個班，每班可以分到幾個？",
+      [{ans:"4",suf:"個"}], "28÷7＝4 個。"),
+    fill("應3","小千包了 6 顆粽子，姊姊包得比小千多 3 顆。把他們的粽子平分給 5 個人，每人可以分到幾顆？",
+      [{ans:"3",suf:"顆"}], "姊姊 6＋3＝9 顆，共 6＋9＝15 顆，15÷5＝3 顆。"),
+    fill("應4","一箱皮影戲偶有 8 個，原本有 7 箱，賣掉了 13 個，還剩幾個？",
+      [{ans:"43",suf:"個"}], "8×7＝56 個，56－13＝43 個。"),
+    fill("應5","皮影戲偶 1 個賣 86 元，特價每個便宜 17 元，小威買了 2 個，共要付多少元？",
+      [{ans:"138",suf:"元"}], "86－17＝69 元，69×2＝138 元。"),
+    fill("應6","二年級共 10 班，每班 27 人；學校租 10 輛車，每輛 35 個座位。學生全部都坐，會剩下幾個座位？",
+      [{ans:"80",suf:"個"}], "學生 10×27＝270 人；座位 10×35＝350 個；350－270＝80 個。"),
+    fill("動腦1","做 1 個皮影戲偶要 1 雙竹筷（8 元）和 7 張圖畫紙（每張 5 元），一共需要付多少元？",
+      [{ans:"43",suf:"元"}], "圖畫紙 7×5＝35 元，再加竹筷 8 元＝43 元。")
+  ]
+},
+/* ===================== 桃園建德 113 數學 ===================== */
+{
+  id:"jiande113", school:"桃園市桃園區建德國小", year:"113學年下學期 期末", icon:"🏫",
+  qs:[
+    fill("填1-1","1 包果凍有 10 個，心婷買了 3 包，小偉買了 2 包。兩人一共買了幾個果凍？",
+      [{ans:"50",suf:"個"}], "(3＋2)×10＝50 個。"),
+    fill("填1-2","小偉比心婷少買幾個果凍？", [{ans:"10",suf:"個"}], "心婷 3 包、小偉 2 包，少 1 包＝1×10＝10 個。"),
+    fill("填2","做 1 個花束要 1 朵紅花和 5 朵黃花，做 6 個花束一共要幾朵花？",
+      [{ans:"36",suf:"朵"}], "1 束 1＋5＝6 朵，6×6＝36 朵。"),
+    fill("填3","1 條巧克力有 3 顆，小風買了 5 條，哥哥又給他 2 顆，小風共有幾顆巧克力？",
+      [{ans:"17",suf:"顆"}], "3×5＝15 顆，15＋2＝17 顆。"),
+    fill("填4","1 雙拖鞋有 2 隻，媽媽買了 9 雙，阿姨買了 8 雙，相差幾隻拖鞋？",
+      [{ans:"2",suf:"隻"}], "差 1 雙＝1×2＝2 隻。"),
+    mcq("填5-1","鞋子的長度大約是 22（　）。", ["公分","公尺"], 0, "鞋子很短，用公分。"),
+    mcq("填5-2","教室黑板長度大約是 4（　）。", ["公尺","公分"], 0, "黑板很長，用公尺。"),
+    mcq("填5-3","教室書桌的寬度大約是 50（　）。", ["公分","公尺"], 0, "書桌寬約 50 公分。"),
+    fill("填6","4 公尺 4 公分 ＝（　）公分。", [{ans:"404",suf:"公分"}], "400＋4＝404 公分。"),
+    fill("填7","991 公分 ＝（　）公尺（　）公分。", [{ans:"9",suf:"公尺"},{ans:"91",suf:"公分"}], "991 公分＝9 公尺 91 公分。"),
+    mcq("填8-1","填入＞、＜或＝：8 公尺 2 公分（　）82 公尺。", ["＞","＜","＝"], 1, "8公尺2公分＝802公分，82公尺＝8200公分，所以＜。"),
+    mcq("填8-2","填入＞、＜或＝：1/9（　）1/5。", ["＞","＜","＝"], 1, "分母越大每份越小，所以 1/9＜1/5。"),
+    fill("填9-1","妮妮把食材分類：肉類有豬肉、雞肉、牛肉；蔬菜水果類有菠菜、玉米筍、西瓜、蘋果。\n先分成幾類？",
+      [{ans:["2","二"],suf:"類"}], "分成肉類和蔬菜水果類，共 2 類。"),
+    fill("填9-2","肉類有豬肉、（　）和（　）。", [{ans:["雞肉"]},{ans:["牛肉"]}], "圖中肉類有豬肉、雞肉、牛肉。"),
+    mcq("填9-3","再買 1 串香蕉，應該分到哪一類？", ["蔬菜水果類","肉類"], 0, "香蕉是水果，分到蔬菜水果類。"),
+    fill("填11-1","看圖：這是什麼形體？（　）體。", [{ans:["長方體","長方"]}], "扁扁長長的盒子是長方體。", {type:"solid",kind:"cuboid"}),
+    fill("填11-2","這個形體有幾個頂點？", [{ans:"8",suf:"個"}], "長方體有 8 個頂點。"),
+    fill("填11-3","這個形體有幾條邊？", [{ans:"12",suf:"條"}], "長方體有 12 條邊。"),
+    fill("填12","有 15 顆彈珠，每 3 顆分 1 堆，可以分成幾堆？", [{ans:"5",suf:"堆"}], "15÷3＝5 堆。"),
+    mcq("填15","相同的物品平分成越多份，其中的 1 份就越（　）。", ["小","大"], 0, "分越多份，每一份越小。"),
+    mcq("填17-1","1 個月餅平分成 4 塊，1 塊是 1/4 個月餅。「1/4」的 4 表示什麼？",
+      ["1 個月餅平分成 4 塊","4 塊中的其中 1 塊"], 0, "分母 4＝平分成 4 塊。"),
+    mcq("填17-2","「1/4」的 1 表示什麼？", ["4 塊中的其中 1 塊","1 個月餅平分成 4 塊"], 0, "分子 1＝取其中 1 塊。"),
+    mcq("連1","36 個蘋果平分裝在 9 個盒子，每盒幾個？記成 4×9＝36。算式裡的「4」表示什麼？",
+      ["每個盒子裝 4 個蘋果","有 9 個盒子","全部有 36 個蘋果"], 0, "4 是每盒裝的個數。"),
+    mcq("連2","算式 4×9＝36 裡的「9」表示什麼？", ["有 9 個盒子","每盒 9 個","全部 36 個"], 0, "9 是盒子的數量。"),
+    mcq("連3","算式 4×9＝36 裡的「36」表示什麼？", ["全部有 36 個蘋果","9 個盒子","每盒 4 個"], 0, "36 是蘋果的總數。"),
+    fill("算1","小紅帽家到森林是 50 公尺，森林到奶奶家是 64 公尺。小紅帽先到森林再到奶奶家，一共要走幾公尺？",
+      [{ans:"114",suf:"公尺"}], "50＋64＝114 公尺。"),
+    fill("算2","大野狼走的虛線路線全長 84 公尺，已經走了 37 公尺，還要走幾公尺才會到奶奶家？",
+      [{ans:"47",suf:"公尺"}], "84－37＝47 公尺。"),
+    fill("應1","1 包色紙有 8 張，豆豆有 6 包，奇奇比豆豆少 13 張，奇奇有幾張？",
+      [{ans:"35",suf:"張"}], "8×6＝48 張，48－13＝35 張。"),
+    fill("應2","小叮噹有 9 元，大雄的錢是小叮噹的 5 倍多 5 元，大雄有幾元？",
+      [{ans:"50",suf:"元"}], "9×5＝45 元，45＋5＝50 元。"),
+    fill("應3","繩子每 5 公分剪 1 段，30 公分長的繩子可以剪成幾段？",
+      [{ans:"6",suf:"段"}], "30÷5＝6 段。"),
+    fill("應4","恩恩將 56 本書平分成 8 堆，每堆有幾本書？",
+      [{ans:"7",suf:"本"}], "56÷8＝7 本。")
+  ]
+},
+/* ===================== 新北土城 安和 112 數學 ===================== */
+{
+  id:"anho112", school:"新北土城 安和國民小學", year:"112學年下學期 第二次", icon:"🏫",
+  qs:[
+    mcq("選1","小均老師有 18 支巧克力雪糕、30 支紅豆雪糕，全部平分給班上 6 個學生，每人可以得到幾支？",
+      ["3 支","5 支","7 支","8 支"], 3, "(18＋30)÷6＝48÷6＝8 支。"),
+    mcq("選2","每層樓高大約 3 公尺，5 層樓的白雲樓，頂樓鐵皮屋再加 2 公尺，總樓高大約幾公尺？",
+      ["5 公尺","15 公尺","17 公尺","25 公尺"], 2, "3×5＝15，15＋2＝17 公尺。"),
+    mcq("選3","二年 5 班 27 人，每 3 人一組分到 6 塊餅乾，全班分成 9 組，老師要準備多少塊餅乾？",
+      ["18 塊","27 塊","36 塊","54 塊"], 3, "9 組×每組 6 塊＝54 塊。"),
+    mcq("選4","一張圖畫紙對摺再對摺，其中一格是幾分之幾張？",
+      ["1/2","1/4","1/3","1/5"], 1, "對摺兩次分成 4 格，1 格是 1/4 張。"),
+    mcq("選5","下列哪一個敘述是對的？",
+      ["長方體有 4 條邊、4 個頂點","正方體有 12 條邊、8 個頂點","正方體有 6 個頂點、8 個面","長方體有 12 條邊、6 個一樣大的面"], 1,
+      "正方體有 12 條邊、8 個頂點、6 個面。"),
+    mcq("圈1-1","教室門的高大約 2（　）。", ["公尺","公分"], 0, "門很高，用公尺。"),
+    mcq("圈1-2","國語課本的長約 28（　）。", ["公分","公尺"], 0, "課本用公分。"),
+    mcq("圈1-3","遊覽車長大約 12（　）。", ["公尺","公分"], 0, "遊覽車很長，用公尺。"),
+    mcq("圈1-4","2 歲妹妹身高 92（　）。", ["公分","公尺"], 0, "身高用公分。"),
+    mcq("圈1-5","鉛筆長大約 14（　）。", ["公分","公尺"], 0, "鉛筆短，用公分。"),
+    fill("填2","品赫量爸爸休旅車車身長 466 公分，也可以說是（　）公尺（　）公分。",
+      [{ans:"4",suf:"公尺"},{ans:"66",suf:"公分"}], "466 公分＝4 公尺 66 公分。"),
+    fill("填3","體適能要跑 200 公尺操場 4 圈（共 800 公尺）。土城運動中心操場一圈 400 公尺，要跑一樣的距離要跑幾圈？",
+      [{ans:"2",suf:"圈"}], "200×4＝800 公尺，800÷400＝2 圈。"),
+    fill("填4","右圖是（　）體，組合時需要（　）張正方形圖卡和（　）張長方形圖卡；它有（　）個面、（　）條邊、（　）個頂點。",
+      [{ans:["長方體","長方"]},{ans:"2"},{ans:"4"},{ans:"6"},{ans:"12"},{ans:"8"}],
+      "這個長方體有 2 個正方形面、4 個長方形面，共 6 面、12 邊、8 頂點。", {type:"solid",kind:"cuboid"}),
+    mcq("填5-1","宜安整理圖卡，先用什麼分成三大類？", ["形狀","顏色","大小"], 0, "先用形狀（正方形、圓形、三角形）分三類。"),
+    mcq("填5-2","接著再用什麼繼續分類？", ["顏色","長度","重量"], 0, "再用黑、白等顏色分。"),
+    fill("填6","把 1 公尺的彩帶平分成 10 段，每一段是（　）公尺，也是（　）公分。",
+      [{ans:["1/10","十分之一"],suf:"公尺"},{ans:"10",suf:"公分"}], "100÷10＝10 公分＝十分之一公尺。"),
+    fill("填7","「1/2」讀作（　）。", [{ans:["二分之一"]}], "分母 2、分子 1，讀作二分之一。"),
+    mcq("填8","把 9 公尺、1 公尺、99 公分由短到長排，正確的是？",
+      ["99 公分 → 1 公尺 → 9 公尺","9 公尺 → 1 公尺 → 99 公分","1 公尺 → 99 公分 → 9 公尺"], 0,
+      "99＜100(1公尺)＜900(9公尺)。"),
+    fill("填10","奶奶買 2 盒牛奶糖，每盒 12 顆，每天給浚宸吃 3 顆，可以吃幾天？",
+      [{ans:"8",suf:"天"}], "12×2＝24 顆，24÷3＝8 天。"),
+    fill("應1","草莓糖葫蘆原價 15 元，當天每串便宜 4 元。建凱和哥哥買了 2 串，一共要付多少元？",
+      [{ans:"22",suf:"元"}], "15−4＝11 元，11×2＝22 元。"),
+    fill("應2","享展買 3 串糖葫蘆（每串便宜 4 元），又買 1 杯自備環保杯的可樂（便宜 5 元），一共便宜多少元？",
+      [{ans:"17",suf:"元"}], "糖葫蘆 4×3＝12 元，可樂 5 元，共便宜 12＋5＝17 元。"),
+    fill("應3","巧克力爆米花 1 袋 10 元，每人限買 1 袋。5 個男生和 4 個女生各買 1 袋，一共要付多少元？",
+      [{ans:"90",suf:"元"}], "5＋4＝9 人，9×10＝90 元。"),
+    mcq("應4","可樂每杯 20 元、黑糖珍奶每杯 35 元（都沒帶環保杯）。小紅買 2 杯可樂，凱翔買 1 杯珍奶，誰付的錢比較多？",
+      ["小紅","凱翔","一樣多"], 0, "小紅 20×2＝40 元，凱翔 35 元，小紅比較多。")
+  ]
+},
+/* ===================== 臺中北屯 文心 112 數學 ===================== */
+{
+  id:"wenxin112", school:"臺中北屯 文心國民小學", year:"112學年下學期 第二次", icon:"🏫",
+  qs:[
+    mcq("圈1","水桶的高度大約是（　）公分。", ["60","6"], 0, "水桶高約 60 公分。"),
+    mcq("圈2","媽媽的皮帶長度大約是 80（　）。", ["公分","公尺"], 0, "皮帶用公分。"),
+    mcq("圈3","學校操場一圈大約是 200（　）。", ["公尺","公分"], 0, "操場很長，用公尺。"),
+    mcq("比1","ㄅ 2公尺、ㄆ 93公分、ㄇ 1公尺2公分、ㄈ 311公分，由高到矮排？",
+      ["ㄈ → ㄅ → ㄇ → ㄆ","ㄅ → ㄈ → ㄇ → ㄆ","ㄈ → ㄅ → ㄆ → ㄇ"], 0, "換成公分：ㄈ311＞ㄅ200＞ㄇ102＞ㄆ93。"),
+    mcq("比2","一條紙帶，1/4 條（　）1/8 條。", ["＞","＜","＝"], 0, "分母小反而大，1/4＞1/8。"),
+    fill("填1","長方體有（　）個頂點、（　）條邊和（　）個面。",
+      [{ans:"8",suf:"頂點"},{ans:"12",suf:"邊"},{ans:"6",suf:"面"}], "長方體：8 頂點、12 邊、6 面。", {type:"solid",kind:"cuboid"}),
+    fill("填2","7 公尺 35 公分 ＝（　）公分。", [{ans:"735",suf:"公分"}], "700＋35＝735 公分。"),
+    fill("填3","608 公分 ＝（　）公尺（　）公分。", [{ans:"6",suf:"公尺"},{ans:"8",suf:"公分"}], "608 公分＝6 公尺 8 公分。"),
+    fill("填4","把全部的物品分給大家，每個人分到的都一樣多，叫做（　）。", [{ans:["平分"]}], "分得一樣多叫平分。"),
+    fill("填5","把一個酥餅平分成 7 份，其中的 1 份是（　）個酥餅。", [{ans:["1/7","七分之一"]}], "平分 7 份，1 份是七分之一。"),
+    fill("填6","平分成 3 份其中 1 份是「三分之一」，可以記成（　）。", [{ans:["1/3"]}], "三分之一記成 1/3。"),
+    fill("填7","有 24 顆草莓，平分給 6 個人，每個人分到（　）顆。", [{ans:"4",suf:"顆"}], "24÷6＝4 顆。"),
+    fill("填8","球場的寬度大約是 12 個 1 公尺，合起來是（　）公尺。", [{ans:"12",suf:"公尺"}], "12 個 1 公尺＝12 公尺。"),
+    fill("填9","「1/6」的分母是（　），分子是（　）。", [{ans:"6"},{ans:"1"}], "下面是分母 6，上面是分子 1。"),
+    fill("填10","一條繩子平分成 9 段，其中 1 段是（　）條繩子。", [{ans:["1/9","九分之一"]}], "平分 9 段，1 段是九分之一條。"),
+    fill("填11","一條吐司平分成 8 片，弟弟吃了 1 片，是吃了（　）條吐司。", [{ans:["1/8","八分之一"]}], "平分 8 片，1 片是八分之一條。"),
+    mcq("填12-1","圖中 ㄅㄆㄇ 是長方體、ㄈ 是正方體。每個面都是一樣大正方形的是？", ["ㄈ","ㄅ","ㄇ"], 0, "正方體 ㄈ 六面都是一樣大的正方形。"),
+    mcq("填12-2","圖形中，有長方形面的是哪些？", ["ㄅ、ㄆ、ㄇ","只有 ㄈ","全部都沒有"], 0, "長方體 ㄅㄆㄇ 有長方形的面。"),
+    mcq("勾選","下面哪一個東西『比 1 公尺短』？", ["鉛筆盒的長度","學校大門的高度","二層樓的高度"], 0, "鉛筆盒比 1 公尺短。"),
+    mcq("看圖","一堆圖卡要分類，可以用什麼方法分？", ["形狀和顏色","聲音和味道","重量和溫度"], 0, "圖卡可以用形狀分，也可以用顏色分。"),
+    fill("做1","有 56 枝鉛筆，平分給 8 個人，每人可以分到幾枝？", [{ans:"7",suf:"枝"}], "56÷8＝7 枝。"),
+    fill("做2","一盤餅乾有 10 片，媽媽做了 6 盤又 7 片，小智吃了 5 盤，還剩幾片？",
+      [{ans:"17",suf:"片"}], "6×10＝60，60＋7＝67 片；吃 5 盤＝50 片，67−50＝17 片。"),
+    fill("做3","一盒蠟筆有 9 枝，桌上有 3 盒，賣掉 19 枝後，還剩幾枝？", [{ans:"8",suf:"枝"}], "9×3＝27，27−19＝8 枝。"),
+    fill("做4","做一個戒指要 8 顆珠子，明明做 3 個、花花做 5 個，兩人共需要幾顆珠子？", [{ans:"64",suf:"顆"}], "3＋5＝8 個，8×8＝64 顆。"),
+    fill("做5-1","3 個雞蛋糕裝一袋。妹妹做 8 個，弟弟比妹妹少 4 個，他們做的共可以裝成幾袋？",
+      [{ans:"4",suf:"袋"}], "弟弟 8−4＝4，共 8＋4＝12 個，12÷3＝4 袋。"),
+    fill("做5-2","再把每 2 袋裝成一盒，一共可以裝成幾盒？", [{ans:"2",suf:"盒"}], "4÷2＝2 盒。"),
+    fill("做6","一張卡片賣 12 元，特價每張 9 元，妹妹買 7 張，可以省下多少元？", [{ans:"21",suf:"元"}], "12−9＝3，3×7＝21 元。"),
+    fill("做7","文心國小一間教室長約 7 公尺，5 間教室連起來大約幾公尺長？", [{ans:"35",suf:"公尺"}], "7×5＝35 公尺。"),
+    fill("做8","有 42 個橘子，平分放到 6 個籃子，每個籃子有幾顆？", [{ans:"7",suf:"顆"}], "42÷6＝7 顆。"),
+    fill("素養1","新鞋櫃有 4 排，每排放 6 雙鞋。爸爸 5 雙、云云 5 雙、媽媽 8 雙，全家共有幾雙鞋？",
+      [{ans:"18",suf:"雙"}], "5＋5＋8＝18 雙。"),
+    fill("素養2","鞋櫃一共可以放 4×6＝24 雙。三個人的鞋都放好後，還可以再放幾雙？", [{ans:"6",suf:"雙"}], "24−18＝6 雙。")
+  ]
+},
+/* ===================== 南投 社寮 112 數學 ===================== */
+{
+  id:"sheliao112", school:"南投 社寮國小", year:"112學年下學期 第二次", icon:"🏫",
+  qs:[
+    mcq("選1","下面這些圖卡可以怎麼分類？",
+      ["先用顏色分三類，再用形狀","先用顏色分兩類，再用大小","先用形狀分兩類，再用顏色","先用顏色分兩類，再用形狀"], 3, "先用顏色分兩類，再用形狀分。"),
+    mcq("選2","下列敘述哪一個比較有可能正確？",
+      ["我的鉛筆盒比 1 公尺長","我家的房子高比 1 公尺短","媽媽的腳掌比 1 公分短","學校的大樹比 3 公尺長"], 3, "大樹比 3 公尺長最合理。"),
+    mcq("選3","有 2 個正方形的面和 4 個長方形的面，組成的是什麼形體？", ["正方體","長方體","圓罐","不知道"], 1, "2 正方形＋4 長方形＝長方體。"),
+    mcq("選4","媽媽買 32 瓶發酵乳，家裡 4 個人。下列哪一個『不正確』？",
+      ["全家每天喝 8 瓶，4 天喝完","每人每天 1 瓶，8 天喝完","每人每天 2 瓶，3 天喝完","每人每天 2 瓶，4 天喝完"], 2,
+      "每人每天 2 瓶＝每天 8 瓶，3 天只喝 24 瓶，喝不完，所以③不正確。"),
+    mcq("選5","下面哪一個分法『不能』剛好分完？",
+      ["72 顆糖平分給 7 個人","27 枝鉛筆平分給 3 個人","15 個梨子平分給 3 個人","10 瓶保久乳平分給小文和他的 4 個同學"], 0,
+      "72÷7 不能整除（剩 2 顆），不能剛好分完。"),
+    mcq("選6","一條蛋糕平分成 3 塊，其中 1 塊是幾條蛋糕？", ["3/1 條","1/3 條","3 條","1/2 條"], 1, "平分 3 塊，1 塊是 1/3 條。"),
+    mcq("選7","圓形圖卡鋪色是 1/4 個圓嗎？（圖中 4 份沒一樣大）",
+      ["是，因為是 4 份中的 1 份","不是，因為 4 份沒有一樣大","是，因為只有 1 份","不能判斷"], 1, "要『平分』才算，4 份沒一樣大就不是 1/4。"),
+    mcq("選8","「200 公分＋4 公尺＝◎」，◎是多少？", ["204 公尺","600 公尺","6 公尺","6 公分"], 2, "200 公分＝2 公尺，2＋4＝6 公尺。"),
+    mcq("選10","媽媽給弟弟 8 個 5 元，弟弟花了 9 元，還剩幾元？正確算法是？",
+      ["8×5＝40，40＋9＝49","5×8＝40，40−9＝31","8×5＝40，40−9＝31","5×8＝40，40＋9＝49"], 2, "8 個 5 元＝8×5＝40 元，40−9＝31 元。"),
+    fill("畫2","有 18 顆草莓，每 3 顆串成一串，可以串成幾串？", [{ans:"6",suf:"串"}], "18÷3＝6 串。"),
+    fill("畫3","把 12 枝鉛筆平分給 3 個人，一個人可以分到幾枝？", [{ans:"4",suf:"枝"}], "12÷3＝4 枝。"),
+    fill("填1","一條紅線平分剪成 8 段，1 段是（　）條紅線。", [{ans:["1/8","八分之一"]}], "平分 8 段，1 段是八分之一條。"),
+    fill("填2","蛋糕：姐姐吃 1/3 塊、爸爸吃 1/4 塊、弟弟吃 1/5 塊。誰吃最多？誰吃最少？",
+      [{ans:["姐姐","姊姊"],suf:"吃最多"},{ans:["弟弟"],suf:"吃最少"}], "分母越小吃越多：1/3 最多（姐姐）、1/5 最少（弟弟）。"),
+    fill("填3-1","鞋櫃 4 排每排放 5 雙。爸爸 4 雙、媽媽 8 雙、小原 5 雙，全家共有幾雙鞋？", [{ans:"17",suf:"雙"}], "4＋8＋5＝17 雙。"),
+    fill("填3-2","鞋櫃一共可以放 4×5＝20 雙。鞋子都放好後，還可以再放幾雙？", [{ans:"3",suf:"雙"}], "20−17＝3 雙。"),
+    fill("填4","衣櫃：衣服有襯衫、外套；褲子有牛仔褲、棉褲；還有襪子。先分成（　）類，分別是（　）、（　）和（　）。",
+      [{ans:["3","三"],suf:"類"},{ans:["衣服"]},{ans:["襪子"]},{ans:["褲子"]}], "分成衣服、襪子、褲子共 3 類。"),
+    fill("填5-1","正方體有（　）個面、（　）條邊、（　）個頂點。", [{ans:"6"},{ans:"12"},{ans:"8"}], "正方體：6 面、12 邊、8 頂點。"),
+    fill("填5-2","長方體有（　）個面、（　）條邊、（　）個頂點。", [{ans:"6"},{ans:"12"},{ans:"8"}], "長方體：6 面、12 邊、8 頂點。"),
+    fill("填6","爺爺把西瓜先平分切一半，再取其中一塊平分切一半給全家吃，全家一共吃了幾個西瓜？",
+      [{ans:["1/4","四分之一"],suf:"個"}], "一半的一半＝1/4 個。"),
+    mcq("填7","木棍 ㄅ190公分、ㄆ 1公尺9公分、ㄇ 88公分、ㄈ 8公尺，由長到短排？",
+      ["ㄈ → ㄅ → ㄆ → ㄇ","ㄅ → ㄈ → ㄆ → ㄇ","ㄈ → ㄅ → ㄇ → ㄆ"], 0, "換公分：ㄈ800＞ㄅ190＞ㄆ109＞ㄇ88。"),
+    fill("做1","弟弟有 5 顆彈珠，哥哥的彈珠是弟弟的 4 倍多 2 顆，哥哥有幾顆？", [{ans:"22",suf:"顆"}], "5×4＝20，20＋2＝22 顆。"),
+    fill("做2","一枝彩虹筆 9 元，小儒買 3 枝、小傑買 6 枝，小儒比小傑少付幾元？",
+      [{ans:"27",suf:"元"}], "小儒 3×9＝27，小傑 6×9＝54，少付 54−27＝27 元。"),
+    fill("做4","正三角形和正方形組成的圖形，正方形一邊是 7 公分，（　）中的長度是幾公分？",
+      [{ans:"7",suf:"公分"}], "正方形每邊一樣長、正三角形每邊一樣長，共用的邊都是 7 公分。")
+  ]
+},
+/* ===================== 新北 桃子腳 113 數學 ===================== */
+{
+  id:"taozijiao113", school:"新北 桃子腳國民中小學", year:"113學年下學期 第二次（單元6～10）", icon:"🏫",
+  qs:[
+    tf("是非1","「1/6」是指『平分成 6 份中的 1 份』。", T, "1/6＝平分 6 份取 1 份，正確。"),
+    tf("是非3","跑學校的操場一圈，大約是 200 公尺。", T, "操場一圈約 200 公尺，合理。"),
+    tf("是非4","21 顆糖果剛好可以平分給西瓜和他的爸爸、媽媽（3 個人）。", T, "21÷3＝7，剛好平分完。"),
+    tf("是非5","瑤瑤喝了 1/2 杯西瓜牛奶，臻臻喝了 1/2 杯布丁牛奶，瑤瑤喝的比較多。", F, "都是 1/2 杯，一樣多。"),
+    fill("填1-1","動物園量身高：長頸鹿 5 公尺 20 公分、鴕鳥 280 公分、大象 340 公分。長頸鹿的身高也可以說是（　）公分。",
+      [{ans:"520",suf:"公分"}], "5 公尺＝500 公分，500＋20＝520 公分。"),
+    fill("填1-2","鴕鳥的身高 280 公分，也可以說是（　）公尺（　）公分。",
+      [{ans:"2",suf:"公尺"},{ans:"80",suf:"公分"}], "280 公分＝2 公尺 80 公分。"),
+    mcq("填1-3","把三隻動物身高由高排到矮（長頸鹿 520、大象 340、鴕鳥 280），代號 ㄅ長頸鹿、ㄇ大象、ㄆ鴕鳥。",
+      ["ㄅ → ㄇ → ㄆ","ㄇ → ㄅ → ㄆ","ㄅ → ㄆ → ㄇ"], 0, "520＞340＞280。"),
+    fill("填2","弟弟身高 107 公分，也可以說成（　）公尺（　）公分。",
+      [{ans:"1",suf:"公尺"},{ans:"7",suf:"公分"}], "107 公分＝1 公尺 7 公分。"),
+    fill("填3","小戴用 1 公尺的繩子量羽球場的寬，量了 6 次，寬大約（　）公尺，也就是（　）公分。",
+      [{ans:"6",suf:"公尺"},{ans:"600",suf:"公分"}], "6 個 1 公尺＝6 公尺＝600 公分。"),
+    fill("填4","蔥油餅：媽媽吃 1/6 個、爸爸吃 1/2 個、妹妹吃 1/3 個，誰吃的最少？",
+      [{ans:["媽媽"]}], "1/6＜1/3＜1/2，媽媽吃最少。"),
+    fill("填5","長方體有（　）個面、（　）個邊、（　）個頂點。",
+      [{ans:"6"},{ans:"12"},{ans:"8"}], "長方體：6 面、12 邊、8 頂點。", {type:"solid",kind:"cuboid"}),
+    mcq("填6","每條邊都一樣長、每個面都一樣大的是？", ["正方體","長方體"], 0, "正方體每邊一樣長、每面一樣大。"),
+    fill("填8","「七分之一」記作（　）；「1/8」讀作（　）。",
+      [{ans:["1/7"]},{ans:["八分之一"]}], "七分之一＝1/7；1/8 讀作八分之一。"),
+    mcq("比1","填 ＞、＜ 或 ＝：302 公分（　）3 公尺 20 公分。", ["＞","＜","＝"], 1, "3 公尺 20 公分＝320 公分，302＜320。"),
+    mcq("比2","填 ＞、＜ 或 ＝：700 公分（　）7 公尺。", ["＞","＜","＝"], 2, "7 公尺＝700 公分，相等。"),
+    mcq("比3","填 ＞、＜ 或 ＝：1/5（　）1/4。", ["＞","＜","＝"], 1, "分母大反而小，1/5＜1/4。"),
+    mcq("比4","填 ＞、＜ 或 ＝：1/2（　）1/4。", ["＞","＜","＝"], 0, "1/2＞1/4。"),
+    fill("終極密碼","終極密碼（三位數）：個位＝長方體的頂點數；十位＝正方體的邊數－長方體的面數；百位＝長方體的邊數－正方體的頂點數＋1。密碼是（　）。",
+      [{ans:"568"}], "個位 8；十位 12−6＝6；百位 12−8＋1＝5；密碼 568。"),
+    fill("看1-1","布丁把食材分類：肉類有雞肉、牛肉、豬肉；水果類有芭樂、西瓜、李子、香蕉。先分成（　）類。",
+      [{ans:["2","二"],suf:"類"}], "分成肉類和水果類，共 2 類。"),
+    fill("看1-3","肉類有雞肉、（　）和（　）。", [{ans:["牛肉"]},{ans:["豬肉"]}], "肉類有雞肉、牛肉、豬肉。"),
+    mcq("看1-5","媽媽買了橘子，可以分到哪一類？", ["水果類","肉類"], 0, "橘子是水果。"),
+    mcq("看1-6","媽媽再買了羊肉，可以分到哪一類？", ["肉類","水果類"], 0, "羊肉是肉類。"),
+    fill("應1","國小到便利商店 60 公尺，便利商店到速食店 80 公尺。老師先到便利商店再到速食店，共走幾公尺？",
+      [{ans:"140",suf:"公尺"}], "60＋80＝140 公尺。"),
+    fill("應2","老師回程直接從速食店回國小是 110 公尺，回程比去程（140 公尺）少走幾公尺？",
+      [{ans:"30",suf:"公尺"}], "140−110＝30 公尺。"),
+    fill("應3","老師買 5 個披薩，每個平分成 8 片，拿 7 片送人，還剩幾片給班上同學？",
+      [{ans:"33",suf:"片"}], "5×8＝40 片，40−7＝33 片。"),
+    fill("應4","一杯綠茶原價 15 元，特價每杯便宜 8 元，老師買了 9 杯，共花多少錢？",
+      [{ans:"63",suf:"元"}], "15−8＝7 元，7×9＝63 元。"),
+    fill("應5","老師買 32 個漢堡，平分裝成 4 袋，每袋有幾個？", [{ans:"8",suf:"個"}], "32÷4＝8 個。"),
+    fill("應6","一盒雞塊有 6 個，老師共買了 42 個，可以裝成幾盒？", [{ans:"7",suf:"盒"}], "42÷6＝7 盒。")
+  ]
+}
+];
+
+const PAPERS_CN = [
+/* ===================== 臺北內湖 113 國語 ===================== */
+{
+  id:"neihu113c", school:"臺北市內湖區內湖國民小學", year:"113學年下學期 國語", icon:"🏫",
+  qs:[
+    self("寫1","短文：午後天空慢慢變暗，開始下雨，作者『撐』起了傘。『撐』的注音是？（先寫，再對答案）","ㄔㄥ","撐＝ㄔㄥ（撐傘）。"),
+    self("寫2","『旁』邊的椅子，『旁』的注音是？","ㄆㄤˊ","旁＝ㄆㄤˊ。"),
+    self("寫3","冰涼的『果汁』，『汁』的注音是？","ㄓ","汁＝ㄓ。"),
+    self("寫4","奶奶說『畫得好極了』，『極』的注音是？","ㄐㄧˊ","極＝ㄐㄧˊ。"),
+    mcq("短文1","先讀短文，再判斷對錯：\n〔短文〕午後下起雨，我坐在家裡的椅子上，拿起畫筆畫雨天的景色。雨停後太陽出來，樹葉上掛著亮晶晶的水珠，小鳥也出來站在樹枝上唱歌。奶奶端來水果和果汁，笑著說：『畫得好極了！』\n\n判斷：短文中『出來站在樹枝上唱歌的』是小鳥。",["對","錯"],0,"小鳥出來站在樹枝上唱歌，正確。"),
+    mcq("短文2","判斷：作者畫的是『大晴天（晴空萬里）』的景色。",["對","錯"],1,"作者畫的是雨天的景色，所以錯。"),
+    mcq("短文3","判斷：作者是在『學校』上畫畫課。",["對","錯"],1,"作者在家裡的椅子上畫畫，不是在學校，錯。"),
+    mcq("部首1","「切」的部首是？",["刀","七","二"],0,"切是「刀」部。"),
+    mcq("部首2","「賣」和「買」的部首是？",["貝","十","目"],0,"和錢有關，是「貝」部。"),
+    mcq("部首3","「讀」的部首是？",["言","賣","目"],0,"和說話有關，是「言」部。"),
+    mcq("仿寫1","照樣寫：『花兒一天比一天美。』哪一句對？",["天氣一天比一天熱","天氣一天熱比一天","一天比天氣一天熱"],0,"句型是「○○一天比一天□□」。"),
+    mcq("仿寫2","照樣寫：『大街上一下子冒出好多答案。』哪句對？",["公園裡一下子跑出好多小朋友","一下子公園好多跑出小朋友","好多小朋友公園一下子跑出"],0,"……一下子……好多……。"),
+    mcq("仿寫3","『爸爸在廚房，一會兒洗菜，一會兒炒菜。』用了什麼句型？",["一會兒…一會兒…","因為…所以…","雖然…但是…"],0,"一會兒…一會兒…表示一下做這、一下做那。"),
+    mcq("用詞1","選正確：（　）天氣放晴，媽媽就會帶我出去玩。",["如果","果然","因此"],0,"表示假設，用『如果』。"),
+    mcq("用詞2","選正確：我把積木拆掉，（　）組合成一個機器人。",["重新","重來","全新"],0,"再做一次用『重新』。"),
+    mcq("用詞3","選正確：弟弟今天睡過頭，（　）就搭不到專車了。",["差點","差不多","早點"],0,"很接近但沒發生，用『差點』。"),
+    self("造句1","用『因此……』造一個句子。（先寫，再看參考答案）","參考：天氣很冷，因此我多穿了一件外套。","『因此』表示前面的原因造成後面的結果。"),
+    mcq("閱讀1","〔草船借箭〕最適合當這篇文章標題的是？",["草船借箭","箭在弦上","萬箭齊發"],0,"孔明用草船向曹操借到十萬枝箭。"),
+    mcq("閱讀2","〔草船借箭〕孔明如何得到十萬枝箭？",["運用計謀，從曹操手中取得","周瑜送給他","派大軍幫忙製造"],0,"用草人讓曹操射箭，箭都插在草人上。"),
+    mcq("閱讀3","〔草船借箭〕這個故事讓我們知道孔明是怎樣的人？",["很聰明又會想辦法","很會做船","很勇敢的戰士"],0,"聰明又會想辦法。")
+  ]
+},
+/* ===================== 臺北民權 113 國語 ===================== */
+{
+  id:"minquan113c", school:"臺北市民權國小", year:"113學年下學期 國語", icon:"🏫",
+  qs:[
+    mcq("閱讀1","先讀短文，再回答：\n〔短文〕我們全家都是愛書人，假日午後的圖書館是我們的祕密基地。爸爸喜歡看科學書探索宇宙；媽媽喜歡看歷史書、講古老故事，好像帶我們穿越『任意門』回到過去；姐姐喜歡小說和詩詞；我最愛看名人傳記，學習名人遇到『險境』時如何堅持。\n\n這篇文章主要在說什麼？",["描述全家人的閱讀喜好","討論一家人如何度過假日","討論不同類型的書籍"],0,"主要在描述全家人愛看的書。"),
+    mcq("閱讀2","第二段提到的『任意門』是指什麼？",["書能帶我們穿越時空、走進故事情境","一種科學的發明","哆啦A夢的神奇道具"],0,"用『任意門』比喻書帶我們進入故事。"),
+    mcq("閱讀3","文中的『險境』不適合用哪個語詞替換？",["夢境","逆境","困境"],0,"險境是危險的處境，不能換成夢境。"),
+    mcq("閱讀4","『楊喚詩集』這本書，最可能是誰愛看的？",["姐姐","爸爸","我"],0,"姐姐偏愛小說和詩詞。"),
+    self("造句1","用『不但……而且……』寫出多閱讀的好處。","參考：多閱讀不但能增加知識，而且能讓我們認識更多字。","不但（一個好處），而且（再一個好處）。"),
+    mcq("選擇1","〈神筆馬良〉馬良為什麼不直接畫金山銀山給皇帝？",["要讓皇帝明白財寶得來不易、懂得珍惜","他不會畫","他想自己留著"],0,"讓皇帝明白財寶得之不易。"),
+    mcq("選擇2","下列「不可思議」用法何者『錯誤』？",["這次考試很簡單，能考一百分真是不可思議","馬良畫出會飛的鳥，真是不可思議","妹妹一天看完整套書，真是不可思議"],0,"簡單考一百分很正常，用『不可思議』不恰當。"),
+    self("選詞","選詞填空（不然、為了、以為、一定、雖然）：（　）我很想玩遊戲，但是（　）不影響功課，我（　）會先寫作業，（　）會玩得不安心。","雖然、為了、一定、不然","雖然想玩，但為了不影響功課，一定先寫作業，不然會不安心。"),
+    fix("改錯1","媽媽下了一跳。","下","嚇","嚇了一跳的『嚇』。"),
+    fix("改錯2","爭大眼睛看一看。","爭","睜","睜大眼睛的『睜』是目字旁。"),
+    fix("改錯3","子細一看。","子","仔","仔細的『仔』是人字旁。"),
+    fix("改錯4","原來是醜小鴉。","鴉","鴨","醜小鴨的『鴨』。"),
+    mcq("組字","『目』和『艮』可以組成哪個字？填入：痛得（　）淚直流。",["眼","跟","很"],0,"目＋艮＝眼，眼淚。"),
+    self("造句2","用『如果……就……』造一個句子。","參考：如果明天天氣好，我們就去公園玩。","如果（條件），就（結果）。")
+  ]
+},
+/* ===================== 桃園建德 113 國語 ===================== */
+{
+  id:"jiande113c", school:"桃園市桃園區建德國小", year:"113學年下學期 國語", icon:"🏫",
+  qs:[
+    self("注音1","『冰磚』搭成的小屋，『磚』的注音是？","ㄓㄨㄢ","磚＝ㄓㄨㄢ（冰磚）。"),
+    self("注音2","牆上掛著『純金』，『純』的注音是？","ㄔㄨㄣˊ","純＝ㄔㄨㄣˊ（純金）。"),
+    self("國字1","朋友 ㄍㄨˇ ㄌㄧˋ 我不要放棄，國字是？","鼓勵","ㄍㄨˇ ㄌㄧˋ＝鼓勵。"),
+    self("國字2","在路邊 ㄓㄞ 花，『ㄓㄞ』的國字是？","摘","ㄓㄞ＝摘（摘花）。"),
+    fix("改錯1","突然聒起一陣大風。","聒","刮","刮風的『刮』。"),
+    fix("改錯2","請仔細確任這份文件。","任","認","確認的『認』是言字旁。"),
+    fix("改錯3","這個玩偶是我真貴的寶物。","真","珍","珍貴的『珍』。"),
+    mcq("部首1","「賣」的部首是？",["貝","十","目"],0,"和錢有關，是「貝」部。"),
+    mcq("部首2","「相」的部首是？",["目","木","日"],0,"相、看都是「目」部。"),
+    self("造句1","用『不論……』造一個句子。","參考：不論晴天或雨天，我都會去上學。","不論（任何情況），都……。"),
+    mcq("仿寫1","照樣寫：『遊客一天比一天多。』哪句對？",["花兒一天比一天美","花兒一天美比一天","一天花兒比一天美"],0,"○○一天比一天□□。"),
+    mcq("仿寫2","照樣寫：『看著朵朵白雲。』哪句對？",["聽著陣陣風聲","風聲陣陣聽著","著聽陣陣風聲"],0,"看著＋疊字＋名詞。"),
+    mcq("選擇1","〈老園丁的話〉老園丁如何阻止遊客破壞植物？",["勸告大家替別人著想，留花給別人欣賞","請警察維持秩序","告訴大家破壞要被處罰"],0,"勸大家為他人著想、維護花草。"),
+    mcq("選擇2","下列量詞哪一個『用錯』了？",["一顆蘋果樹","一條小路","一座公園"],0,"樹要用「棵」，「一顆蘋果樹」是錯的。"),
+    mcq("選擇3","和『講故事』組成方式相同的是？",["畫風景","學生說","仔細聽"],0,"動詞＋名詞：畫風景。"),
+    mcq("選擇4","下列哪一個『要』讀音和其他不同？",["要求","必要","需要"],0,"要求念ㄧㄠ，其他念ㄧㄠˋ。"),
+    mcq("選擇5","哪一個表達的時間『最長』？",["許久","一會兒","一眨眼"],0,"許久＝很久，時間最長。"),
+    mcq("閱讀1","〔屈原與粽子〕人們包粽子、划龍舟是為了紀念誰？",["屈原","楚王","屈原的母親"],0,"紀念愛國詩人屈原。"),
+    mcq("閱讀2","〔屈原〕楚王為什麼漸漸不再信任屈原？",["有人在楚王面前說屈原的壞話","屈原說楚王壞話","屈原是敵國間諜"],0,"壞人進讒言。"),
+    mcq("閱讀3","〔屈原〕人民四處尋找屈原的身體，原因可能是？",["敬佩屈原的愛國情操","有獎金可以拿","討厭屈原"],0,"敬佩他的愛國。")
+  ]
+},
+/* ===================== 高雄鳳山忠孝 113 國語 ===================== */
+{
+  id:"zhongxiao113c", school:"高雄市鳳山區忠孝國小", year:"113學年下學期 國語", icon:"🏫",
+  qs:[
+    self("國字1","『ㄍㄨㄚ』颱風，請寫出 ㄍㄨㄚ 的國字。（先寫，再對答案）","刮","ㄍㄨㄚ＝刮（刮颱風）。"),
+    self("注音1","每天『練』習踢足球，『練』的注音是？","ㄌㄧㄢˋ","練＝ㄌㄧㄢˋ。"),
+    self("注音2","搭『郵輪』去玩，『輪』的注音是？","ㄌㄨㄣˊ","輪＝ㄌㄨㄣˊ。"),
+    mcq("語詞1","念一念，填正確語詞（果然／可是／精采）：表演非常（　），大家看得目不轉睛。",["精采","可是","果然"],0,"表演好看用『精采』。"),
+    mcq("相似1","『ㄧㄣˊ』色的湯匙，用哪個字？",["銀","眼","跟"],0,"銀色的「銀」，金字旁。"),
+    mcq("相似2","雨『ㄉㄧ』落下來，用哪個字？",["滴","摘","該"],0,"水滴的「滴」，三點水。"),
+    mcq("讀音1","下面哪一個『差』讀音和其他不同？",["郵差","差別","差異"],0,"郵差念ㄔㄞ，其他念ㄔㄚ。"),
+    mcq("意思1","和『漂亮』意思相近的是？",["美麗","難看","奇怪"],0,"漂亮＝美麗。"),
+    mcq("部首1","下列哪一個字和『相』部首一樣（都是目部）？",["看","休","花"],0,"相、看都是「目」部。"),
+    self("把被1","把『螞蟻把蛋糕吃掉了』改寫成『被』字句。","蛋糕被螞蟻吃掉了","把字句↔被字句，東西放前面。"),
+    mcq("把被2","『蛋糕被螞蟻吃掉了』和哪一句意思相同？",["螞蟻把蛋糕吃掉了","蛋糕把螞蟻吃掉了","螞蟻被蛋糕吃掉了"],0,"被↔把互換，意思一樣。"),
+    mcq("閱讀1","〔雷公與下雨〕詩中雷公為什麼生氣？",["山玩得髒兮兮，雷公要叫山去洗澎澎","山不聽話","山太吵了"],0,"山玩得髒，雷公生氣下雨幫山洗澡。"),
+    mcq("閱讀2","〔詩〕『一團白白的泡沫』是指什麼？",["山腰上的白雲","真的泡沫","下的雪"],0,"用譬喻，指山腰的白雲。"),
+    mcq("閱讀3","〔詩〕冰屋『涼快得不得了』是什麼意思？",["非常涼快","有一點涼","不涼快"],0,"『得不得了』＝非常。")
+  ]
+},
+/* ===================== 準備中 ===================== */
+/* ===================== 臺南和順 113 國語 ===================== */
+{
+  id:"heshun113c", school:"臺南 和順國小", year:"113學年下學期 國語", icon:"🏫",
+  qs:[
+    self("注音1","早上『床鋪』旁的鬧鐘響了，『鋪』的注音是？","ㄆㄨ","床鋪的鋪念ㄆㄨ。"),
+    self("注音2","『瞇』著眼看窗外，『瞇』的注音是？","ㄇㄧ","瞇著眼念ㄇㄧ。"),
+    self("注音3","『滴答』的雨聲落下，『答』在這裡的注音是？","ㄉㄚ","滴答的答念ㄉㄚ。"),
+    self("注音4","原本『糟糕』的心情，『糕』的注音是？","ㄍㄠ","糟糕的糕念ㄍㄠ。"),
+    self("國字1","ㄊㄢˊ 奏新編的曲子，『ㄊㄢˊ』的國字是？","彈","ㄊㄢˊ＝彈（彈奏）。"),
+    self("國字2","雙手撫上 ㄧㄣˊ 色的琴弦，『ㄧㄣˊ』的國字是？","銀","ㄧㄣˊ＝銀（銀弦）。"),
+    self("國字3","心中 ㄔㄨㄣˊ 粹的熱情，『ㄔㄨㄣˊ』的國字是？","純","ㄔㄨㄣˊ＝純（純粹）。"),
+    fix("改錯1","世上最真貴的禮物。","真","珍","珍貴的『珍』。"),
+    fix("改錯2","屋頂是什麼形壯呢？","壯","狀","形狀的『狀』。"),
+    fix("改錯3","生活課要進行分組討輪。","輪","論","討論的『論』是言字旁。"),
+    fix("改錯4","打掃時我負責牌好椅子。","牌","排","排好椅子的『排』。"),
+    fix("改錯5","曉偉早上經神不好。","經","精","精神的『精』。"),
+    mcq("選1","〈傘〉一課，作者和爺爺出的謎語謎底是什麼？",["作者的謎底是雨滴，爺爺的謎底是傘","作者的謎底是傘，爺爺的謎底是雨滴","兩人的謎底都是傘"],0,"作者→雨滴；爺爺→傘。"),
+    mcq("選2","〈老園丁的話〉老園丁如何阻止遊客破壞植物？",["立下告示牌提醒遊客","口頭警告會被處罰","請警察幫忙"],0,"立告示牌提醒遊客愛護花草。"),
+    mcq("選3","〈小小說書人〉何者敘述『錯誤』？",["班上只有小光說故事給大家聽","活動是老師安排的","賣帽子的故事出現調皮的猴子"],0,"不是只有小光，這句錯誤。"),
+    mcq("選4","〈點金術〉哪一項『不是』被國王碰到後變成黃金的？",["身旁的大臣","想吃的食物","路上的石椅"],0,"大臣沒有被碰成金子。"),
+    mcq("選5","〈我喜歡你〉當『我』失敗時，『你』會怎麼樣？",["鼓勵我重新站起來","跟著我大笑","伸長脖子說祕密"],0,"鼓勵我重新站起來。"),
+    mcq("選6","『弟弟把樹上的果子摘下來』換句話說？",["樹上的果子被弟弟摘下來","樹上被果子的弟弟摘下來","果子的弟弟被樹上摘下來"],0,"把字句↔被字句。"),
+    mcq("選7","下列哪個字部首『不是』衣部？",["神","裡","袋"],0,"神是『示』部（礻）。"),
+    mcq("選8","下列哪個字部首『是』人部？",["介","全","食"],0,"介是『人』部。"),
+    mcq("選9","下列哪個『不是』味覺的形容詞？",["潔白的","酸甜的","美味的"],0,"潔白是顏色，不是味覺。"),
+    mcq("選10","下列哪個名詞『不適合』用書名號？",["四腳亭（地名）","小蜜蜂（歌曲）","國語日報週刊"],0,"四腳亭是地名，要用專名號不是書名號。"),
+    mcq("選11","下列哪個字筆劃最多？",["鮮","錯","鋪"],0,"鮮 17 畫最多。"),
+    mcq("選12","下列何者形容時間很『短暫』？",["再過一會兒就吃晚餐","長期運動的習慣","這座橋蓋了許久"],0,"『一會兒』表示時間很短。"),
+    mcq("選13","下列『他』哪一個應該用『它』？",["這是我的玩偶，他叫小綠","鸚鵡他總是學我說話","弟弟他最愛吃芒果"],0,"玩偶是物，要用『它』。"),
+    mcq("選14","賽跑：『除了領先的羚羊以外，跑最快的是長頸鹿，再來是獅子』，誰跑最快？",["羚羊","長頸鹿","獅子"],0,"羚羊領先，跑最快。"),
+    mcq("選15","承上題，誰跑最慢？",["獅子","長頸鹿","羚羊"],0,"順序：羚羊→長頸鹿→獅子，獅子最慢。"),
+    mcq("成語1","桃子腳新蓋的校舍（　），讓我們很期待去上課！",["美輪美奐","半途而廢","火傘高張"],0,"形容建築華美用『美輪美奐』。"),
+    mcq("成語2","快到山頂了，大家要堅持，千萬別（　）！",["半途而廢","按部就班","耳目一新"],0,"中途放棄叫『半途而廢』。"),
+    mcq("成語3","只要照著說明書（　）的操作，就能完成。",["按部就班","絞盡腦汁","火傘高張"],0,"照步驟做叫『按部就班』。"),
+    mcq("成語4","暑假烈日炎炎，（　），海邊充滿玩水人潮。",["火傘高張","美輪美奐","半途而廢"],0,"形容太陽很大用『火傘高張』。"),
+    self("造句1","照樣寫：『帽子一頂又一頂，好像生日蛋糕。』請仿寫一個。","參考：氣球一個又一個，好像一串葡萄。","○○一X又一X，好像○○。"),
+    self("造句2","用『……並……』造一個句子。","參考：我打掃完房間，並把垃圾拿去丟。","『並』把兩件事連起來。"),
+    mcq("圈1","這（　）榕樹很大。",["棵","顆"],0,"樹用『棵』。"),
+    mcq("圈2","樹上有一（　）破掉的籃球。",["顆","棵"],0,"球用『顆』。"),
+    mcq("圈3","夜深了，（　）鴉飛回巢。",["烏","鳥"],0,"烏鴉的『烏』。"),
+    mcq("圈4","小鳥飛回自己的（　）巢休息。",["鳥","烏"],0,"鳥巢的『鳥』。"),
+    mcq("圈5","（　）年期間去看燈會。",["新","欣"],0,"新年的『新』。"),
+    mcq("圈6","我們一起（　）賞花燈。",["欣","新"],0,"欣賞的『欣』。"),
+    mcq("圈7","媽媽搭公車（　）返公司和家。",["往","住"],0,"往返的『往』。"),
+    mcq("圈8","媽媽辛苦的回到（　）家。",["住","往"],0,"住家的『住』。"),
+    mcq("圈9","在森林裡（　）路的孩子。",["迷","瞇","謎"],0,"迷路的『迷』。"),
+    mcq("圈10","解出藏寶圖上的（　）題。",["謎","迷","瞇"],0,"謎題的『謎』。"),
+    mcq("閱讀甲1","先讀短文，再回答：\n〔過年的禁忌〕過年時打破碗，長輩會念『歲歲（碎碎）平安』；不可以掃地、倒垃圾，會把家裡的財氣倒出去；大年初一要吃除夕剩下的過年飯，表示『年年有餘』。\n\n過年打破碗，長輩通常會念什麼？",["歲歲平安","爆竹一聲除舊歲","千秋萬歲"],0,"念『歲歲（碎碎）平安』。"),
+    mcq("閱讀甲2","過年時掃地和倒垃圾代表什麼？",["把家中財氣倒出去","好的衛生習慣","送舊迎新"],0,"會把財氣倒出去。"),
+    mcq("閱讀甲3","大年初一為什麼要吃除夕剩下的飯？",["代表年年有餘","省吃儉用","沒東西可以吃"],0,"表示年年有餘。"),
+    mcq("閱讀乙1","先讀短文，再回答：\n〔蘇東坡替人畫扇子〕有個做扇子的人欠債還不出，因為夏天常下雨，扇子沒人買。蘇東坡在他的扇子上題詩、畫山水，叫他拿去市集賣。結果門外早有很多人等著買，一會兒就賣光，還清了欠債。\n\n欠債的人做的扇子為什麼賣不出去？",["夏天常下雨，沒人買","扇子做得差","扇子賣得太貴"],0,"夏天常下雨，扇子沒人要。"),
+    mcq("閱讀乙2","為什麼蘇東坡題詩畫畫後，扇子一會兒就賣光了？",["因為蘇東坡的詩詞書畫寫得好、受大家喜愛","大家同情欠債的人","蘇東坡請朋友來買"],0,"蘇東坡的詩畫受大家喜愛。")
+  ]
+},
+/* ===================== 桃園大華 112 國語 ===================== */
+{
+  id:"dahua112c", school:"桃園 大華國小", year:"112學年下學期 國語", icon:"🏫",
+  qs:[
+    self("注音1","大家都特『別』期待，『別』的注音是？","ㄅㄧㄝˊ","特別的別念ㄅㄧㄝˊ。"),
+    self("注音2","校長『介紹』來賓，『介紹』的注音是？","ㄐㄧㄝˋ ㄕㄠˋ","介紹＝ㄐㄧㄝˋ ㄕㄠˋ。"),
+    self("注音3","玩著猜『謎』字卡，『謎』的注音是？","ㄇㄧˊ","猜謎的謎念ㄇㄧˊ。"),
+    self("國字1","拿出運動家的 ㄐㄧㄥ 神，『ㄐㄧㄥ』的國字是？","精","ㄐㄧㄥ＝精（精神）。"),
+    self("國字2","在紅 ㄓㄨㄢ 道上撐起天幕，『ㄓㄨㄢ』的國字是？","磚","ㄓㄨㄢ＝磚（紅磚）。"),
+    self("國字3","ㄆㄨ 上地墊，『ㄆㄨ』的國字是？","鋪","ㄆㄨ＝鋪（鋪上）。"),
+    self("國字4","擺上新 ㄒㄧㄢ 水果，『ㄒㄧㄢ』的國字是？","鮮","ㄒㄧㄢ＝鮮（新鮮）。"),
+    mcq("閱讀1","先讀短文，再回答：\n〔短文〕親職教育日，今年除了埤塘路跑，還有不插電野餐。我們先在操場聽校長介紹來賓，做完暖身後出發，努力跑完全程。十點半開始野餐，在紅磚道上撐起天幕、鋪上地墊，擺上蛋糕、水果，玩骨牌、象棋、猜謎字卡，大家嘻嘻哈哈度過一個早上。\n\n這次路跑活動地點在哪裡？",["埤塘","市場","學校"],0,"在埤塘路跑。"),
+    mcq("閱讀2","今年的親職教育日，學校舉辦幾項活動？",["2 項（路跑、野餐）","3 項","4 項"],0,"埤塘路跑＋不插電野餐＝2 項。"),
+    mcq("閱讀3","下面哪一個較符合『運動家精神』？",["堅持到底","隨便完成","半途而廢"],0,"努力跑完全程＝堅持到底。"),
+    fix("改錯1","戲偶可以拿余傘。","余","雨","雨傘的『雨』。"),
+    fix("改錯2","戲偶拿著枴仗走路。","仗","杖","枴杖的『杖』。"),
+    fix("改錯3","揮舞垠色的刀劍。","垠","銀","銀色的『銀』。"),
+    fix("改錯4","讓戲偶錀流上陣。","錀","輪","輪流的『輪』。"),
+    fix("改錯5","戲偶和老虎筆武。","筆","比","比武的『比』。"),
+    fix("改錯6","這些全部都油演師一人完成。","油","由","由演師的『由』。"),
+    mcq("圈1","阿姨把一（　）種子種在花圃。",["顆","棵"],0,"種子用『顆』。"),
+    mcq("圈2","期待它長成一（　）檸檬樹。",["棵","顆"],0,"樹用『棵』。"),
+    mcq("圈3","放學（　）刻一到。",["時","等","待"],0,"時刻的『時』。"),
+    mcq("圈4","全校學生（　）在中廊等家長。",["待","時","等"],0,"待在中廊的『待』。"),
+    mcq("圈5","爸爸在電器特（　）會買果汁機。",["賣","買","讀"],0,"特賣會的『賣』。"),
+    mcq("圈6","他仔細閱（　）使用說明書。",["讀","買","賣"],0,"閱讀的『讀』。"),
+    mcq("選1","下列哪個字的部首『不是』字本身？",["丁","而","立"],0,"丁的部首是『一』，不是丁本身。"),
+    mcq("選2","下列哪一個選項的時間最短？",["一眨眼","一整天","一小時"],0,"一眨眼最短。"),
+    mcq("選3","下列哪一組語詞意思『相反』？",["認真／隨便","清晨／一大早","減少／變少"],0,"認真↔隨便。"),
+    mcq("選4","〈如果，我的房間〉主角最喜歡哪一個房間？",["原來的房間","北極冰屋","果園"],0,"最喜歡原來的房間。"),
+    mcq("選5","〈我喜歡你〉作者覺得和對方在一起時最重要的是什麼？",["陪伴","守時","誇獎"],0,"最重要的是陪伴。"),
+    mcq("選6","下列哪一個喜歡的程度最高？",["我非常喜歡吃西瓜","我喜歡吃西瓜","我很喜歡吃西瓜"],0,"『非常』程度最高。"),
+    mcq("選7","〈點金術〉國王為什麼覺得他的願望很可怕？",["東西全都變成金子，連食物也不能吃","金子全都不見了","珠寶都變成食物"],0,"東西全變金子。"),
+    mcq("選8","『除了小華以外，作業最快寫完的是小成，再來是小美。』作業最快完成的是誰？",["小華","小成","小美"],0,"小華比所有人都快。"),
+    mcq("選9","〈老園丁的話〉老園丁寫布告的用意是什麼？",["希望遊客愛護花草","不歡迎遊客","跟遊客一起種花草"],0,"希望遊客愛護花草。"),
+    self("照樣1","照樣寫：（冒出）好多（答案）。請填：（　）好多（　）。","參考：（長出）好多（葉子）。","動詞＋好多＋名詞。"),
+    self("照樣2","照樣寫：（一座）（純金）的（人像）。請填：（　）（　）的（　）。","參考：（一條）（彎彎）的（小路）。","量詞＋形容詞＋名詞。"),
+    self("造句1","用『……因此……』造一個句子。","參考：我認真練習，因此進步很多。","因此表示前面的原因造成後面的結果。"),
+    self("造句2","用『不論……』造一個句子。","參考：不論晴天或雨天，我都會運動。","不論（任何情況），都……。"),
+    mcq("告示1","先讀告示，再回答：\n〔告示〕『和○○一起說故事』2024/6/8(六)到 8/28(三)，邀請 4 位繪本作家，在桃園圖書館總館 3 樓兒藝展示區展出，歡迎參觀。──桃園圖書館\n\n這是一張什麼？",["告示","便條","家書"],0,"這是展覽通知告示。"),
+    mcq("告示2","這張告示主要在寫什麼？",["展覽展出的時間和地點","問候大家近況","祝福大家"],0,"寫展覽的時間和地點。"),
+    mcq("告示3","這個活動的時間大約是什麼時候？",["暑假","過年","寒假"],0,"6/8～8/28，是暑假期間。")
+  ]
+},
+/* ===================== 新北桃子腳 112 國語 ===================== */
+{
+  id:"taozijiao112c", school:"新北 桃子腳國民中小學", year:"112學年下學期 國語", icon:"🏫",
+  qs:[
+    self("國字1","只要努力，鼓 ㄌㄧˋ 自己，『ㄌㄧˋ』的國字是？","勵","ㄌㄧˋ＝勵（鼓勵）。"),
+    self("注音1","小明走『錯』路了，『錯』的注音是？","ㄘㄨㄛˋ","走錯的錯念ㄘㄨㄛˋ。"),
+    self("國字2","遠處傳來 ㄊㄢˊ 琴的聲音，『ㄊㄢˊ』的國字是？","彈","ㄊㄢˊ＝彈（彈琴）。"),
+    self("注音2","原來是一隻會彈琴的『猴』子，『猴』的注音是？","ㄏㄡˊ","猴子的猴念ㄏㄡˊ。"),
+    self("國字3","他拿出 ㄒㄧㄤ 機拍照，『ㄒㄧㄤ』的國字是？","相","ㄒㄧㄤ＝相（相機）。"),
+    mcq("代1","哥哥喜歡到溼地觀察，（　）常帶著望遠鏡。",["他","它","她"],0,"哥哥是男生，用『他』。"),
+    mcq("代2","水筆仔是常見的植物，（　）是胎生的。",["它","他","她"],0,"植物是東西，用『它』。"),
+    mcq("代3","妹妹跟著哥哥去，（　）看見招潮蟹很開心。",["她","他","它"],0,"妹妹是女生，用『她』。"),
+    self("猜字","『咬』掉一口（猜一字）。提示：把『咬』的『口』拿掉。","交","咬去掉口＝交。"),
+    self("作者","〈回鄉偶書〉這首詩的作者是誰？","賀知章","〈回鄉偶書〉作者是賀知章。"),
+    fix("改錯1","弟弟戴冒子。","冒","帽","戴帽子的『帽』。"),
+    fix("改錯2","走累了，坐在石椅旁休習。","習","息","休息的『息』。"),
+    fix("改錯3","天空飄來烏雲，天色案了下來。","案","暗","天色暗了的『暗』。"),
+    mcq("閱讀1","先讀短文，再回答：\n〔短文〕小明背起背包走進森林，遠處傳來彈琴的聲音，原來是一隻會彈琴的猴子！猴子送給他一張地圖，他照著地圖來到一間木屋，裡面裝滿金幣和一張寫著『金已找到』的紙條。\n\n小明在冒險途中遇到什麼人物？",["會彈琴的猴子","媽媽","學校老師"],0,"遇到會彈琴的猴子。"),
+    mcq("閱讀2","小明為什麼出發去冒險？",["他想尋找藏在山林裡的寶藏","他想找猴子玩","他要去上學"],0,"他想尋找寶藏。"),
+    mcq("選1","〈我喜歡你〉當『我』失敗時，『你』會怎麼樣？",["鼓勵我","嘲笑我","沒有反應"],0,"鼓勵我。"),
+    mcq("選2","下列哪一個選項的時間最長？",["一整天","一下子","一會兒"],0,"一整天最長。"),
+    mcq("選3","〈如果，我的房間〉夏天時，為什麼作者希望房間在北極？",["可以涼快得不得了","可以跟北極熊做朋友","不用付房租"],0,"北極很冷，夏天會涼快。"),
+    mcq("選4","〈點金術〉中，被國王碰到的東西會變成什麼？",["金子","食物","石頭"],0,"碰到的東西都變成金子。"),
+    self("照樣1","照樣寫：（冒出）好多（答案）。請填（　）好多（　）。","參考：（開出）好多（花朵）。","動詞＋好多＋名詞。"),
+    self("照樣2","照樣寫：（一座）（純金）的（人像）。","參考：（一條）（長長）的（馬路）。","量詞＋形容詞＋名詞。"),
+    self("造句1","用『……因此……』造一個句子。","參考：天氣變冷，因此我穿上外套。","因此表示結果。"),
+    self("造句2","用『不論……』造一個句子。","參考：不論多忙，我都會運動。","不論…都…。")
+  ]
+}
+];
+
+/* 同一篇短文的後續題，作答時顯示短文當參考 */
+function markCont(pid, map){
+  const all = PAPERS_MATH.concat(PAPERS_CN);
+  const p = all.find(x=>x.id===pid); if(!p||!p.qs) return;
+  for(const k in map){ const q = p.qs.find(q=>q.n===k); if(q) q.cont = map[k]; }
+}
+markCont("neihu111",   {"填10-2":1,"填10-3":2});
+markCont("jiande113",  {"填1-2":1,"填9-2":1,"填9-3":2,"填11-2":1,"填11-3":2,"算2":1});
+markCont("anho112",    {"填5-2":1,"應2":1});
+markCont("wenxin112",  {"填12-2":1,"做5-2":1,"素養2":1});
+markCont("sheliao112", {"填3-2":1,"填5-2":1});
+markCont("taozijiao113",{"填1-2":1,"填1-3":2,"看1-3":1,"應2":1});
+markCont("neihu113c",  {"短文2":1,"短文3":2});
+markCont("minquan113c",{"閱讀2":1,"閱讀3":2,"閱讀4":3});
+markCont("heshun113c", {"閱讀甲2":1,"閱讀甲3":2,"閱讀乙2":1});
+markCont("dahua112c",  {"閱讀2":1,"閱讀3":2,"告示2":1,"告示3":2});
+markCont("taozijiao112c",{"閱讀2":1});
+
+/* ========================= 引擎 ========================= */
+const $ = id => document.getElementById(id);
+let state = { paper:null, idx:0, results:[] };
+let PAPERS = PAPERS_MATH, subject = "math";
+function setSubject(s){
+  subject = s;
+  PAPERS = (s==="math") ? PAPERS_MATH : PAPERS_CN;
+  $("subMath").classList.toggle("off", s!=="math");
+  $("subCN").classList.toggle("off", s!=="cn");
+  renderHome();
+  show("screenHome");
+}
+
+function show(s){ ["screenHome","screenExam","screenResult"].forEach(x=>$(x).classList.add("hide")); $(s).classList.remove("hide"); window.scrollTo(0,0); }
+
+function renderHome(){
+  const list = $("paperList"); list.innerHTML = "";
+  PAPERS.forEach(p=>{
+    const b = document.createElement("button");
+    b.className = "pcard" + (p.soon ? " soon" : "");
+    const cnt = p.soon ? "準備中" : (p.qs.length + " 題");
+    b.innerHTML = '<div class="pico">'+p.icon+'</div>'+
+      '<div class="pmain"><div class="pname">'+p.school+'</div><div class="pmeta">'+p.year+'　'+cnt+'</div></div>'+
+      '<div class="parrow">'+(p.soon?"準備中":"▶")+'</div>';
+    if(!p.soon) b.onclick = ()=>startPaper(p);
+    list.appendChild(b);
+  });
+}
+
+function startPaper(p){
+  state.paper = p; state.idx = 0;
+  state.results = p.qs.map(()=>null);
+  show("screenExam");
+  renderQ();
+}
+$("examBack").onclick = ()=>{ renderHome(); show("screenHome"); };
+
+function totalScore(){
+  let got=0, tot=0;
+  state.results.forEach(r=>{ if(r){ got+=r.got; } });
+  state.paper.qs.forEach(q=> tot += qPoints(q));
+  return {got, tot};
+}
+function qPoints(q){ if(q.type==="fill") return q.blanks.length; if(q.type==="fix") return 2; return 1; }
+
+function renderQ(){
+  const q = state.paper.qs[state.idx];
+  const total = state.paper.qs.length;
+  const done = state.results[state.idx];
+  $("qsec").textContent = state.paper.school + "　" + state.paper.year;
+  $("qnum").textContent = "第 " + (state.idx+1) + " / " + total + " 題　(" + q.n + ")";
+  const ctx = $("qctx");
+  if(q.cont && state.idx>0){
+    const n = (q.cont===true) ? 1 : q.cont;
+    let html = '<div class="ctxlbl">📌 上一題的內容（給你參考）</div>';
+    for(let k=Math.max(0,state.idx-n); k<state.idx; k++){
+      const p = state.paper.qs[k];
+      html += '<div class="ctxq">（'+p.n+'）'+p.q+'</div>' + (p.vis ? solidHTML(p.vis) : "");
+    }
+    ctx.innerHTML = html; ctx.classList.remove("hide");
+  } else { ctx.classList.add("hide"); ctx.innerHTML = ""; }
+  $("qtext").textContent = q.q;
+  $("qvisual").innerHTML = q.vis ? solidHTML(q.vis) : "";
+  $("bar").style.width = (state.idx/total*100) + "%";
+  const sc = totalScore(); $("scoreLbl").textContent = "⭐ " + sc.got + "/" + sc.tot;
+  ["opts","fills","selfbtns"].forEach(x=>$(x).classList.add("hide"));
+  $("checkBtn").classList.add("hide");
+  $("checkBtn").textContent = "✏️ 對答案";
+  const fb = $("feedback"); fb.className = "feedback"; fb.innerHTML = ""; fb.style = "";
+  $("prevBtn").disabled = (state.idx===0);
+  $("nextBtn").disabled = !done;
+  $("nextBtn").textContent = (state.idx===total-1) ? "看成績 🏁" : "下一題 →";
+
+  if(q.type==="mcq" || q.type==="tf") renderChoice(q, done);
+  else if(q.type==="fill") renderFill(q, done);
+  else if(q.type==="fix") renderFix(q, done);
+  else renderSelf(q, done);
+}
+
+function renderChoice(q, done){
+  const opts = $("opts"); opts.classList.remove("hide"); opts.innerHTML = "";
+  const list = (q.type==="tf") ? ["⭕ 對","❌ 錯"] : q.o;
+  const ans = (q.type==="tf") ? (q.a ? 0 : 1) : q.a;
+  const labels = ["A","B","C","D"];
+  list.forEach((opt,i)=>{
+    const b = document.createElement("button");
+    b.className = "opt";
+    b.innerHTML = '<span class="badge">'+labels[i]+'</span><span>'+opt+'</span>';
+    if(done){
+      b.style.pointerEvents="none";
+      if(i===ans) b.classList.add("correct");
+      else if(i===done.pick) b.classList.add("wrong");
+      else b.classList.add("dim");
+    } else {
+      b.onclick = ()=>{
+        opts.querySelectorAll(".opt").forEach((x,xi)=>{ x.style.pointerEvents="none";
+          if(xi===ans) x.classList.add("correct"); else if(xi===i) x.classList.add("wrong"); else x.classList.add("dim"); });
+        const ok = (i===ans);
+        state.results[state.idx] = {got: ok?1:0, pick:i};
+        showFB(ok, ok?"答對了！":("正確答案是 "+list[ans]), q.e);
+        afterAnswer();
+      };
+    }
+    opts.appendChild(b);
+  });
+  if(done) showFB(done.got>0, done.got>0?"答對了！":("正確答案是 "+list[ans]), q.e);
+}
+
+function renderFill(q, done){
+  const box = $("fills"); box.classList.remove("hide"); box.innerHTML = "";
+  q.blanks.forEach((bk,i)=>{
+    const row = document.createElement("div"); row.className = "frow";
+    row.innerHTML = (bk.pre?('<span>'+bk.pre+'</span>'):'') +
+      '<input class="fin" id="fin'+i+'" autocomplete="off">' +
+      (bk.suf?('<span>'+bk.suf+'</span>'):'');
+    box.appendChild(row);
+  });
+  if(done){
+    q.blanks.forEach((bk,i)=>{ const el=$("fin"+i); el.value=done.vals[i]; el.disabled=true;
+      el.classList.add(done.marks[i]?"ok":"bad"); });
+    showFB(done.got===qPoints(q), fillAnsText(q), q.e);
+  } else {
+    $("checkBtn").classList.remove("hide");
+    $("checkBtn").onclick = ()=>{
+      const vals=[], marks=[]; let got=0;
+      q.blanks.forEach((bk,i)=>{
+        const el=$("fin"+i); const v=el.value; vals.push(v);
+        const ok = checkBlank(bk, v); marks.push(ok); if(ok) got++;
+        el.disabled=true; el.classList.add(ok?"ok":"bad");
+      });
+      state.results[state.idx] = {got, vals, marks};
+      $("checkBtn").classList.add("hide");
+      showFB(got===q.blanks.length, fillAnsText(q), q.e);
+      afterAnswer();
+    };
+  }
+}
+function fillAnsText(q){
+  const a = q.blanks.map(bk=> (Array.isArray(bk.ans)?bk.ans[0]:bk.ans) + (bk.suf||"") ).join("、");
+  return "正確答案：" + a;
+}
+
+function renderSelf(q, done){
+  const ansText = Array.isArray(q.ans) ? q.ans[0] : q.ans;
+  const box = $("fills"); box.classList.remove("hide");
+  if(done){
+    box.innerHTML = '<div class="frow"><input class="fin finwide" id="fin0" disabled></div>';
+    const el = $("fin0"); el.value = done.val || ""; el.classList.add(done.got>0?"ok":"bad");
+    showFB(done.got>0, "參考答案："+ansText, q.e);
+    return;
+  }
+  box.innerHTML = '<div class="frow"><input class="fin finwide" id="fin0" autocomplete="off" placeholder="在這裡打答案"></div>'
+    + '<div class="orwrite">或用電腦筆／手指寫 ✍️</div>' + padHTML("pad0");
+  setupPad("pad0");
+  $("checkBtn").classList.remove("hide");
+  $("checkBtn").textContent = "✏️ 對答案";
+  $("checkBtn").onclick = ()=>{
+    const el = $("fin0"); const v = el ? el.value : "";
+    const acc = Array.isArray(q.ans) ? q.ans : [q.ans];
+    const auto = v.trim()!=="" && acc.some(a=>norm(a)===norm(v));
+    if(el) el.disabled = true;
+    $("checkBtn").classList.add("hide");
+    if(auto){
+      if(el) el.classList.add("ok");
+      state.results[state.idx] = {got:1, val:v};
+      showFB(true, "參考答案："+ansText, q.e);
+      afterAnswer();
+    } else {
+      if(el && v.trim()!=="") el.classList.add("bad");
+      const fb = $("feedback");
+      fb.className = "feedback show";
+      fb.style.background = "#f0f6ff"; fb.style.border = "2px solid #b9d6ef"; fb.style.color = "#2f6690";
+      fb.innerHTML = '👀 看看你寫的對不對？<span class="ans">參考答案：'+ansText+'</span>' + (q.e?('<span class="exp">'+q.e+'</span>'):"");
+      $("selfbtns").classList.remove("hide");
+      $("selfOk").onclick = ()=>{ if(el){el.classList.remove("bad"); el.classList.add("ok");} state.results[state.idx]={got:1, val:v}; $("selfbtns").classList.add("hide"); fb.style="";  afterAnswer(); };
+      $("selfNo").onclick = ()=>{ state.results[state.idx]={got:0, val:v}; $("selfbtns").classList.add("hide"); fb.style=""; afterAnswer(); };
+    }
+  };
+}
+
+/* 立體形體 SVG（數學用）*/
+function solidHTML(v){ return '<div class="solidbox">'+svgSolid(v.kind)+'</div>'; }
+function svgSolid(kind){
+  const c='#9ec9e8', c2='#bfe0f4', c3='#7fb6dd', st='#3a7aa6';
+  if(kind==='cube') return '<svg width="120" height="120" viewBox="0 0 125 125">'+
+    '<polygon points="25,48 80,48 80,103 25,103" fill="'+c+'" stroke="'+st+'" stroke-width="2.5"/>'+
+    '<polygon points="25,48 50,24 105,24 80,48" fill="'+c2+'" stroke="'+st+'" stroke-width="2.5"/>'+
+    '<polygon points="80,48 105,24 105,79 80,103" fill="'+c3+'" stroke="'+st+'" stroke-width="2.5"/></svg>';
+  return '<svg width="150" height="115" viewBox="0 0 150 115">'+
+    '<polygon points="20,45 105,45 105,95 20,95" fill="'+c+'" stroke="'+st+'" stroke-width="2.5"/>'+
+    '<polygon points="20,45 45,22 130,22 105,45" fill="'+c2+'" stroke="'+st+'" stroke-width="2.5"/>'+
+    '<polygon points="105,45 130,22 130,72 105,95" fill="'+c3+'" stroke="'+st+'" stroke-width="2.5"/></svg>';
+}
+
+/* 手寫板（電腦筆 / 手指 / 滑鼠）*/
+function padHTML(id){
+  return '<div class="penbar">'
+    + '<button type="button" class="pentool on" data-pen="ink">✏️ 筆</button>'
+    + '<button type="button" class="pentool" data-pen="erase">🧽 橡皮擦</button>'
+    + '<button type="button" class="pentool" data-pen="clear">🗑️ 清除</button>'
+    + '</div><canvas id="'+id+'" class="padcanvas"></canvas>';
+}
+function setupPad(id){
+  const c = document.getElementById(id); if(!c) return;
+  const rect = c.getBoundingClientRect();
+  if(rect.width===0){ requestAnimationFrame(()=>setupPad(id)); return; }
+  const dpr = window.devicePixelRatio || 1;
+  c.width = Math.round(rect.width*dpr); c.height = Math.round(rect.height*dpr);
+  const ctx = c.getContext("2d"); ctx.setTransform(dpr,0,0,dpr,0,0); ctx.lineCap="round"; ctx.lineJoin="round";
+  const W = rect.width, H = rect.height;
+  let mode = "ink", drawing = false;
+  c.parentNode.querySelectorAll(".pentool").forEach(b=>{
+    b.onclick = ()=>{
+      const m = b.dataset.pen;
+      if(m==="clear"){ ctx.clearRect(0,0,W,H); return; }
+      mode = m;
+      c.parentNode.querySelectorAll('.pentool[data-pen="ink"],.pentool[data-pen="erase"]').forEach(x=>x.classList.toggle("on", x.dataset.pen===m));
+    };
+  });
+  const pos = e=>{ const r=c.getBoundingClientRect(); return {x:e.clientX-r.left, y:e.clientY-r.top, p:e.pressure||0}; };
+  const style = p=>{ if(mode==="erase"){ ctx.globalCompositeOperation="destination-out"; ctx.lineWidth=26; }
+    else { ctx.globalCompositeOperation="source-over"; ctx.strokeStyle="#2b3a55"; ctx.lineWidth = p.p>0 ? 3+p.p*9 : 6; } };
+  c.addEventListener("pointerdown", e=>{ e.preventDefault(); c.setPointerCapture(e.pointerId); drawing=true; const p=pos(e); style(p); ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(p.x+0.1,p.y+0.1); ctx.stroke(); });
+  c.addEventListener("pointermove", e=>{ if(!drawing) return; e.preventDefault(); const p=pos(e); style(p); ctx.lineTo(p.x,p.y); ctx.stroke(); ctx.beginPath(); ctx.moveTo(p.x,p.y); });
+  const end = ()=>{ drawing=false; };
+  c.addEventListener("pointerup", end); c.addEventListener("pointercancel", end); c.addEventListener("pointerleave", end);
+}
+
+/* 改錯字：圈錯字 + 寫正確的字 */
+function renderFix(q, done){
+  const box = $("fills"); box.classList.remove("hide");
+  let html = '<div class="fixinstr">👆 先點一下你覺得寫錯的字（會圈起來），再把正確的字打出來或用筆寫。</div>'
+    + '<div class="fixsentence" id="fixSent"></div>'
+    + '<div class="frow" style="margin-top:12px;">正確的字：<input class="fin" id="finFix" autocomplete="off" maxlength="2" style="width:80px;"></div>';
+  if(!done) html += '<div class="orwrite">或用電腦筆／手指寫 ✍️</div>' + padHTML("padFix");
+  box.innerHTML = html;
+  const sent = $("fixSent"); const chars = [...q.s];
+  let pickedIdx = done ? done.pick : -1;
+  chars.forEach((ch,idx)=>{
+    const sp = document.createElement("span"); sp.className = "fixchar"; sp.textContent = ch;
+    if(done){
+      sp.style.pointerEvents = "none";
+      if(ch===q.bad) sp.classList.add("isbad");
+      if(idx===pickedIdx && ch!==q.bad) sp.classList.add("nope");
+    } else {
+      sp.onclick = ()=>{ sent.querySelectorAll(".fixchar").forEach(x=>x.classList.remove("circled")); sp.classList.add("circled"); pickedIdx = idx; };
+    }
+    sent.appendChild(sp);
+  });
+  if(done){
+    const fi = $("finFix"); if(fi){ fi.value = done.val||""; fi.disabled = true; fi.classList.add(done.charOK?"ok":"bad"); }
+    showFixFB(q, {circleOK:(done.pick>=0 && chars[done.pick]===q.bad), charOK:done.charOK});
+    return;
+  }
+  setupPad("padFix");
+  $("checkBtn").classList.remove("hide"); $("checkBtn").textContent = "✏️ 對答案";
+  $("checkBtn").onclick = ()=>{
+    const circleOK = (pickedIdx>=0 && chars[pickedIdx]===q.bad);
+    const v = $("finFix").value;
+    const charAuto = (v.trim()!=="" && norm(v)===norm(q.ans));
+    sent.querySelectorAll(".fixchar").forEach((x,i)=>{ x.style.pointerEvents="none"; if(chars[i]===q.bad) x.classList.add("isbad"); if(i===pickedIdx && chars[i]!==q.bad) x.classList.add("nope"); });
+    $("finFix").disabled = true;
+    $("checkBtn").classList.add("hide");
+    if(charAuto){
+      $("finFix").classList.add("ok");
+      state.results[state.idx] = {got:(circleOK?1:0)+1, pick:pickedIdx, val:v, charOK:true};
+      showFixFB(q, {circleOK, charOK:true});
+      afterAnswer();
+    } else {
+      if(v.trim()!=="") $("finFix").classList.add("bad");
+      showFixFB(q, {circleOK, charOK:false});
+      $("selfbtns").classList.remove("hide");
+      $("selfOk").onclick = ()=>{ $("finFix").classList.remove("bad"); $("finFix").classList.add("ok"); state.results[state.idx]={got:(circleOK?1:0)+1, pick:pickedIdx, val:v, charOK:true}; $("selfbtns").classList.add("hide"); showFixFB(q,{circleOK,charOK:true}); afterAnswer(); };
+      $("selfNo").onclick = ()=>{ state.results[state.idx]={got:(circleOK?1:0), pick:pickedIdx, val:v, charOK:false}; $("selfbtns").classList.add("hide"); afterAnswer(); };
+    }
+  };
+}
+function showFixFB(q, r){
+  const both = r.circleOK && r.charOK;
+  const fb = $("feedback"); fb.style = "";
+  fb.className = "feedback show " + (both ? "good" : "bad");
+  let head = both ? "🎉 圈對也寫對了！" : (r.circleOK ? "✅ 圈對了！但正確的字要再看看：" : (r.charOK ? "✅ 字寫對了！但錯字要圈這個：" : "💡 再看一次："));
+  fb.innerHTML = head + '<span class="ans">錯字是「'+q.bad+'」，要改成「'+q.ans+'」。</span>' + (q.e?('<span class="exp">'+q.e+'</span>'):"");
+}
+function checkBlank(bk, v){
+  const acc = Array.isArray(bk.ans)?bk.ans:[bk.ans];
+  return acc.some(a=>norm(a)===norm(v));
+}
+function norm(s){
+  return String(s).trim()
+    .replace(/[０-９]/g, d=>String.fromCharCode(d.charCodeAt(0)-65248))
+    .replace(/／/g,"/").replace(/\s+/g,"")
+    .replace(/[（）()]/g,"").toLowerCase();
+}
+function showFB(good, ansLine, exp){
+  const fb=$("feedback");
+  fb.className = "feedback show " + (good?"good":"bad");
+  fb.innerHTML = (good?"🎉 ":"💡 ") + (good?"很棒！":"再看一次：") +
+    '<span class="ans">'+ansLine+'</span>' + (exp?('<span class="exp">'+exp+'</span>'):"");
+}
+function afterAnswer(){
+  const sc=totalScore(); $("scoreLbl").textContent = "⭐ "+sc.got+"/"+sc.tot;
+  $("nextBtn").disabled = false;
+}
+
+$("prevBtn").onclick = ()=>{ if(state.idx>0){ state.idx--; renderQ(); } };
+$("nextBtn").onclick = ()=>{
+  if(state.idx < state.paper.qs.length-1){ state.idx++; renderQ(); }
+  else finish();
+};
+
+function finish(){
+  const sc = totalScore();
+  $("bar").style.width = "100%";
+  const pct = sc.tot>0 ? sc.got/sc.tot : 0;
+  let stars = pct>=1?5 : pct>=0.8?4 : pct>=0.6?3 : pct>=0.4?2 : 1;
+  $("resStars").textContent = "⭐".repeat(stars) + "☆".repeat(5-stars);
+  $("resScore").textContent = "答對 " + sc.got + " / " + sc.tot + " 分";
+  let emoji,title,msg;
+  if(pct>=1){ emoji="🏆"; title="滿分！太厲害了！"; msg="整份都對，你是國語小高手！"; }
+  else if(pct>=0.8){ emoji="🎉"; title="表現超棒！"; msg="只錯一點點，繼續加油！"; }
+  else if(pct>=0.6){ emoji="😀"; title="做得很好！"; msg="多讀幾次題目會更棒！"; }
+  else if(pct>=0.4){ emoji="💪"; title="有進步喔！"; msg="把題目讀清楚再作答，會更準！"; }
+  else { emoji="🌱"; title="再考一次！"; msg="慢慢來，一題一題看清楚問什麼。"; }
+  $("resEmoji").textContent=emoji; $("resTitle").textContent=title; $("resMsg").textContent=msg;
+  show("screenResult");
+}
+$("againBtn").onclick = ()=>startPaper(state.paper);
+$("homeBtn").onclick = ()=>{ renderHome(); show("screenHome"); };
+
+$("subMath").onclick = ()=>setSubject("math");
+$("subCN").onclick = ()=>setSubject("cn");
+setSubject("math");
+<\/script>
+</body>
+</html>
+
+</script>
+<script>
+(function(){
+  var f=document.getElementById("frame");
+  var bp=document.getElementById("bPractice"), be=document.getElementById("bExam");
+  function unesc(t){ return t.replace(/<\\\/script>/g, "<\/script>"); }
+  function load(which){
+    if(which==="exam"){ f.srcdoc=unesc(document.getElementById("srcExam").textContent); be.classList.add("on"); bp.classList.remove("on"); }
+    else { f.srcdoc=unesc(document.getElementById("srcPractice").textContent); bp.classList.add("on"); be.classList.remove("on"); }
+  }
+  bp.onclick=function(){ load("practice"); };
+  be.onclick=function(){ load("exam"); };
+  load("practice");
+})();
 </script>
 </body>
 </html>
