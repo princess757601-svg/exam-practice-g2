@@ -1644,6 +1644,11 @@ setSubject("chinese");
   .subtab#subCN{background:linear-gradient(var(--pink),var(--pink-d));}
   .subtab.off{filter:grayscale(.55) brightness(1.05); opacity:.65; box-shadow:0 4px 0 rgba(0,0,0,.08);}
   .solidbox{display:flex; justify-content:center; padding:10px; background:#f6fbff; border:2px solid #e2e9f1; border-radius:14px;}
+  .fracrow{display:flex; gap:18px; justify-content:center; flex-wrap:wrap; background:#f6fbff; border:2px solid #e2e9f1; border-radius:14px; padding:12px;}
+  .fracfig{text-align:center;}
+  .fcap{margin-top:4px; font-weight:800; color:#2f9fc4; font-size:16px;}
+  .grouprow{font-size:30px; line-height:1.55; letter-spacing:4px; background:#f6fbff; border:2px solid #e2e9f1; border-radius:14px; padding:12px; text-align:center; word-break:break-word;}
+  .gnote{font-size:14px; color:#e0662f; font-weight:800; margin-top:8px;}
   .papers{display:flex; flex-direction:column; gap:12px;}
   .pcard{border:none; cursor:pointer; font-family:inherit; text-align:left; background:var(--card);
     border-radius:18px; padding:16px 18px; box-shadow:0 4px 14px rgba(80,90,120,.14); transition:transform .08s;
@@ -1852,7 +1857,10 @@ const PAPERS_MATH = [
     fill("應6","二年級共 10 班，每班 27 人；學校租 10 輛車，每輛 35 個座位。學生全部都坐，會剩下幾個座位？",
       [{ans:"80",suf:"個"}], "學生 10×27＝270 人；座位 10×35＝350 個；350－270＝80 個。"),
     fill("動腦1","做 1 個皮影戲偶要 1 雙竹筷（8 元）和 7 張圖畫紙（每張 5 元），一共需要付多少元？",
-      [{ans:"43",suf:"元"}], "圖畫紙 7×5＝35 元，再加竹筷 8 元＝43 元。")
+      [{ans:"43",suf:"元"}], "圖畫紙 7×5＝35 元，再加竹筷 8 元＝43 元。"),
+    fill("圖1","看圖，塗色部分是幾分之幾？", [{ans:["1/4","四分之一"]}], "平分成 4 份，塗了 1 份＝四分之一。", {type:"frac",figs:[{d:4,n:1}]}),
+    mcq("圖2","看圖，哪一個分數比較大？", ["左邊 1/2","右邊 1/4","一樣大"], 0, "分母小、每份大，1/2＞1/4。", {type:"frac",figs:[{d:2,n:1,cap:"1/2"},{d:4,n:1,cap:"1/4"}]}),
+    mcq("圖3","看圖，這個圖形有沒有『平分』（每份一樣大）？", ["有平分","沒有平分"], 0, "切成大小一樣的份就是平分。", {type:"frac",figs:[{d:6,n:3}]})
   ]
 },
 /* ===================== 桃園建德 113 數學 ===================== */
@@ -1902,7 +1910,10 @@ const PAPERS_MATH = [
     fill("應3","繩子每 5 公分剪 1 段，30 公分長的繩子可以剪成幾段？",
       [{ans:"6",suf:"段"}], "30÷5＝6 段。"),
     fill("應4","恩恩將 56 本書平分成 8 堆，每堆有幾本書？",
-      [{ans:"7",suf:"本"}], "56÷8＝7 本。")
+      [{ans:"7",suf:"本"}], "56÷8＝7 本。"),
+    fill("描面","卡卡把這個形體的每一個面描下來，這是什麼形體？（　）體。", [{ans:["長方體","長方"]}], "扁長的盒子是長方體。", {type:"solid",kind:"cuboid"}),
+    fill("圓塗色","看圖，塗色部分是幾分之幾？", [{ans:["1/3","三分之一"]}], "平分成 3 份塗 1 份＝三分之一。", {type:"frac",figs:[{d:3,n:1}]}),
+    mcq("圖比","看圖，哪一個比較大？", ["左邊 1/2","右邊 1/6","一樣大"], 0, "分母小的比較大，1/2＞1/6。", {type:"frac",figs:[{d:2,n:1,cap:"1/2"},{d:6,n:1,cap:"1/6"}]})
   ]
 },
 /* ===================== 新北土城 安和 112 數學 ===================== */
@@ -1949,7 +1960,9 @@ const PAPERS_MATH = [
     fill("應3","巧克力爆米花 1 袋 10 元，每人限買 1 袋。5 個男生和 4 個女生各買 1 袋，一共要付多少元？",
       [{ans:"90",suf:"元"}], "5＋4＝9 人，9×10＝90 元。"),
     mcq("應4","可樂每杯 20 元、黑糖珍奶每杯 35 元（都沒帶環保杯）。小紅買 2 杯可樂，凱翔買 1 杯珍奶，誰付的錢比較多？",
-      ["小紅","凱翔","一樣多"], 0, "小紅 20×2＝40 元，凱翔 35 元，小紅比較多。")
+      ["小紅","凱翔","一樣多"], 0, "小紅 20×2＝40 元，凱翔 35 元，小紅比較多。"),
+    fill("圈裝袋","下圖每 5 顆檸檬裝 1 袋，可以裝成幾袋？", [{ans:"4",suf:"袋"}], "20 顆 ÷ 每袋 5 顆 ＝ 4 袋。", {type:"group",icon:"🍋",n:20,note:"每 5 顆圈成 1 袋"}),
+    mcq("平分OX","看圖，這個圖形有沒有平分（每份一樣大）？", ["有平分","沒有平分"], 0, "六等份大小一樣，是平分。", {type:"frac",figs:[{d:6,n:3}]})
   ]
 },
 /* ===================== 臺中北屯 文心 112 數學 ===================== */
@@ -1991,7 +2004,9 @@ const PAPERS_MATH = [
     fill("做8","有 42 個橘子，平分放到 6 個籃子，每個籃子有幾顆？", [{ans:"7",suf:"顆"}], "42÷6＝7 顆。"),
     fill("素養1","新鞋櫃有 4 排，每排放 6 雙鞋。爸爸 5 雙、云云 5 雙、媽媽 8 雙，全家共有幾雙鞋？",
       [{ans:"18",suf:"雙"}], "5＋5＋8＝18 雙。"),
-    fill("素養2","鞋櫃一共可以放 4×6＝24 雙。三個人的鞋都放好後，還可以再放幾雙？", [{ans:"6",suf:"雙"}], "24−18＝6 雙。")
+    fill("素養2","鞋櫃一共可以放 4×6＝24 雙。三個人的鞋都放好後，還可以再放幾雙？", [{ans:"6",suf:"雙"}], "24−18＝6 雙。"),
+    mcq("圈平分","看圖，這個圓有沒有平分成 3 份（每份一樣大）？", ["有，平分成 3 份","沒有平分"], 0, "切成 3 個一樣大就是平分成 3 份。", {type:"frac",figs:[{d:3,n:0}]}),
+    fill("數圖卡","看圖數數看，🔺三角形一共有幾個？", [{ans:"5",suf:"個"}], "一個一個數，共 5 個。", {type:"group",icon:"🔺",n:5})
   ]
 },
 /* ===================== 南投 社寮 112 數學 ===================== */
@@ -2034,7 +2049,10 @@ const PAPERS_MATH = [
     fill("做2","一枝彩虹筆 9 元，小儒買 3 枝、小傑買 6 枝，小儒比小傑少付幾元？",
       [{ans:"27",suf:"元"}], "小儒 3×9＝27，小傑 6×9＝54，少付 54−27＝27 元。"),
     fill("做4","正三角形和正方形組成的圖形，正方形一邊是 7 公分，（　）中的長度是幾公分？",
-      [{ans:"7",suf:"公分"}], "正方形每邊一樣長、正三角形每邊一樣長，共用的邊都是 7 公分。")
+      [{ans:"7",suf:"公分"}], "正方形每邊一樣長、正三角形每邊一樣長，共用的邊都是 7 公分。"),
+    self("畫1","在紙上把一塊蛋糕畫出 1/4（平分成 4 塊，塗 1 塊）。畫好後按看答案。", "平分成 4 等份，塗其中 1 份就是 1/4。", "1/4＝四份中的 1 份，每份要一樣大。"),
+    fill("數糖果","看圖數數看，糖果一共有幾顆？", [{ans:"15",suf:"顆"}], "5 顆一排，共 3 排，5×3＝15 顆。", {type:"group",icon:"🍬",n:15,note:"5 顆一排，共 3 排"}),
+    fill("數圖卡","看圖數數看，🔺三角形圖卡一共有幾張？", [{ans:"5",suf:"張"}], "一張一張數，共 5 張。", {type:"group",icon:"🔺",n:5})
   ]
 },
 /* ===================== 新北 桃子腳 113 數學 ===================== */
@@ -2082,7 +2100,10 @@ const PAPERS_MATH = [
     fill("應4","一杯綠茶原價 15 元，特價每杯便宜 8 元，老師買了 9 杯，共花多少錢？",
       [{ans:"63",suf:"元"}], "15−8＝7 元，7×9＝63 元。"),
     fill("應5","老師買 32 個漢堡，平分裝成 4 袋，每袋有幾個？", [{ans:"8",suf:"個"}], "32÷4＝8 個。"),
-    fill("應6","一盒雞塊有 6 個，老師共買了 42 個，可以裝成幾盒？", [{ans:"7",suf:"盒"}], "42÷6＝7 盒。")
+    fill("應6","一盒雞塊有 6 個，老師共買了 42 個，可以裝成幾盒？", [{ans:"7",suf:"盒"}], "42÷6＝7 盒。"),
+    mcq("紙片","用 6 張一樣大的正方形紙片，可以組成什麼形體？", ["正方體","長方體","球"], 0, "6 個一樣大的正方形可以組成正方體。"),
+    fill("數圖卡","看圖數數看，🟦正方形圖卡一共有幾張？", [{ans:"6",suf:"張"}], "一張一張數，共 6 張。", {type:"group",icon:"🟦",n:6}),
+    fill("塗色分數","看圖，塗色部分是幾分之幾？", [{ans:["1/2","二分之一"]}], "平分成 2 份塗 1 份＝二分之一。", {type:"frac",figs:[{d:2,n:1}]})
   ]
 }
 ];
@@ -2385,12 +2406,12 @@ function renderQ(){
     let html = '<div class="ctxlbl">📌 上一題的內容（給你參考）</div>';
     for(let k=Math.max(0,state.idx-n); k<state.idx; k++){
       const p = state.paper.qs[k];
-      html += '<div class="ctxq">（'+p.n+'）'+p.q+'</div>' + (p.vis ? solidHTML(p.vis) : "");
+      html += '<div class="ctxq">（'+p.n+'）'+p.q+'</div>' + (p.vis ? renderVisual(p.vis) : "");
     }
     ctx.innerHTML = html; ctx.classList.remove("hide");
   } else { ctx.classList.add("hide"); ctx.innerHTML = ""; }
   $("qtext").textContent = q.q;
-  $("qvisual").innerHTML = q.vis ? solidHTML(q.vis) : "";
+  $("qvisual").innerHTML = q.vis ? renderVisual(q.vis) : "";
   $("bar").style.width = (state.idx/total*100) + "%";
   const sc = totalScore(); $("scoreLbl").textContent = "⭐ " + sc.got + "/" + sc.tot;
   ["opts","fills","selfbtns"].forEach(x=>$(x).classList.add("hide"));
@@ -2508,6 +2529,39 @@ function renderSelf(q, done){
   };
 }
 
+/* 圖形總渲染 */
+function renderVisual(v){
+  if(!v) return "";
+  if(v.type==="frac") return fracHTML(v);
+  if(v.type==="group") return groupHTML(v);
+  return solidHTML(v); /* type:"solid" 或含 kind */
+}
+/* 分數圖：扇形(預設) / 長條 */
+function fracHTML(v){ return '<div class="fracrow">'+(v.figs||[v]).map(fracFig).join("")+'</div>'; }
+function fracFig(f){
+  var d=f.d, n=f.n||0, svg, i;
+  if(f.shape==="bar"){
+    var cells="", w=150/d;
+    for(i=0;i<d;i++){ cells+='<rect x="'+(i*w).toFixed(1)+'" y="0" width="'+w.toFixed(1)+'" height="40" fill="'+(i<n?"#ffd23f":"#fff")+'" stroke="#3a7aa6" stroke-width="1.5"/>'; }
+    svg='<svg width="152" height="42" viewBox="-1 -1 152 42">'+cells+'</svg>';
+  } else {
+    var R=46, cx=52, cy=52, parts="";
+    for(i=0;i<d;i++){
+      var a0=(i/d)*2*Math.PI - Math.PI/2, a1=((i+1)/d)*2*Math.PI - Math.PI/2;
+      var x0=(cx+R*Math.cos(a0)).toFixed(1), y0=(cy+R*Math.sin(a0)).toFixed(1);
+      var x1=(cx+R*Math.cos(a1)).toFixed(1), y1=(cy+R*Math.sin(a1)).toFixed(1);
+      var large=((a1-a0)>Math.PI)?1:0;
+      parts+='<path d="M'+cx+' '+cy+' L'+x0+' '+y0+' A'+R+' '+R+' 0 '+large+' 1 '+x1+' '+y1+' Z" fill="'+(i<n?"#ffd23f":"#fff")+'" stroke="#3a7aa6" stroke-width="1.5"/>';
+    }
+    svg='<svg width="104" height="104" viewBox="0 0 104 104">'+parts+'</svg>';
+  }
+  return '<div class="fracfig">'+svg+(f.cap?'<div class="fcap">'+f.cap+'</div>':'')+'</div>';
+}
+/* 一堆物品（圈裝袋 / 數數）*/
+function groupHTML(v){
+  var s=""; for(var i=0;i<v.n;i++) s+=v.icon;
+  return '<div class="grouprow">'+s+'</div>'+(v.note?'<div class="gnote">'+v.note+'</div>':'');
+}
 /* 立體形體 SVG（數學用）*/
 function solidHTML(v){ return '<div class="solidbox">'+svgSolid(v.kind)+'</div>'; }
 function svgSolid(kind){
